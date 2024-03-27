@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'karla', sans-serif;
+    margin: 0;
+    /* Added to remove default margin */
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: transparent;
+    padding: 0.6%;
+    z-index: 100;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+}
+
+.navtext {
+    font-size: xx-large;
+    color: #007700;
+    margin-left: 4%;
+    font-size: 2.5vw;
+}
+
+.search-container {
+    margin-left: 7%;
+}
+
+.search-input {
+    height: 4.3vh;
+    width: 40vw;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    color: #4a4a4a;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1.1vw;
+}
+
+.navbar ul li {
+    margin-left: 4em;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.3vw;
+    font-weight: 500;
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 0.07vh;
+    background-color: #4a4a4a;
+    margin-top: 7%;
+}
+
+.marquee-container {
+    margin-top: 1%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.marquee {
+    white-space: nowrap;
+    animation: marquee 10s linear infinite;
+    display: flex;
+    align-items: center;
+}
+
+.marquee img {
+    width: 6.5vw;
+    margin-right: 10px;
+}
+
+.line {
+    width: 5vw;
+    height: 0.1vh;
+    background-color: #4a4a4a;
+    margin-right: 10px;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
