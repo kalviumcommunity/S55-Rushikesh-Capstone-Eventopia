@@ -1,13 +1,18 @@
 const express = require('express');
 require('dotenv').config();
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.get('/',(req,res)=>{
-    res.send('Server deployed')
-})
+app.get('/', (req, res) => {
+    res.send('Server deployed');
+});
 
-app.listen(process.env.PORT || 3000 , ()=>{
- console.log('success')
-})
+const server = app.listen(PORT, () => {
+    console.log('Server started successfully');
+});
+
+server.on('error', (err) => {
+    console.error('Server failed to start:', err.message);
+});
 
 module.exports = app;
