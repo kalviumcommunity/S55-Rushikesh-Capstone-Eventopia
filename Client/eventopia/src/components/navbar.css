@@ -5,9 +5,8 @@
 }
 
 body {
-    font-family: 'karla', sans-serif;
+    font-family:     sans-serif;
     margin: 0;
-    /* Added to remove default margin */
 }
 
 .navbar {
@@ -72,11 +71,12 @@ body {
     margin-top: 1%;
     width: 100%;
     overflow: hidden;
+    margin-bottom: 1%;
 }
 
 .marquee {
     white-space: nowrap;
-    animation: marquee 10s linear infinite;
+    animation: marquee 20s linear infinite;
     display: flex;
     align-items: center;
 }
@@ -91,6 +91,45 @@ body {
     height: 0.1vh;
     background-color: #4a4a4a;
     margin-right: 10px;
+}
+
+.filtercontainer{
+    background-color: #f3f3f3;
+    width: 100%;
+    height: 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.filtercontainertext{
+    font-size: 1.8vw;
+    margin-right: 13%;
+}
+
+.buttons {
+    display: flex;
+}
+
+.buttons button {
+    margin-right: 2vw;
+    height: 7vh;
+    width: 11vw;
+    font-weight: bolder;
+    font-size: 1.2vw;
+    background-color: white;
+    box-shadow: 3px 3px      rgb(127, 109, 109);
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.buttons button:active {
+    background-color: #f3f3f3; 
+    box-shadow: inset 8px 8px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.buttons button:focus {
+    outline: none; 
 }
 
 @keyframes marquee {

@@ -50,6 +50,13 @@ function Navbar() {
                     <img src={Gfglogo} alt="" />
                 </div>
             </div>
+            <div className="filtercontainer">
+            <p className="filtercontainertext">Connecting College, One Event at a Time</p>
+            <div className="buttons">
+            <button>TECHNICAL</button>
+            <button>CULTURAL</button>
+            </div>
+            </div>
         </div>
     );
 }
