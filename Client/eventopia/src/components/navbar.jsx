@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import './navbar.css';
 import Searchsymbol from '../assets/searchsymbol.png'
 import Awslogo from '../assets/awslogo.png'
@@ -10,15 +10,48 @@ import Tedxlogo from '../assets/tedxlogo.jpg'
 import Swiftlogo from '../assets/swiftlogo.jpg'
 import Cognisancelogo from '../assets/cognisancelogo.jpg'
 import Mlsclogo from '../assets/mlsclogo.jpg'
-import Gfglogo from '../assets/gfglogo.jpg'
+import Gfglogo from '../assets/gfglogo.jpg';
 
 function Navbar() {
+    const [activeButton, setActiveButton] = useState(null);
+    const [searchSymbolVisible, setSearchSymbolVisible] = useState(true);
+    const [searchActive, setSearchActive] = useState(false);
+    const searchContainerRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (searchContainerRef.current && !searchContainerRef.current.contains(event.target)) {
+                setSearchSymbolVisible(true);
+                setSearchActive(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    const handleClick = (button) => {
+        if (button === activeButton) {
+            setActiveButton(null);
+        } else {
+            setActiveButton(button);
+        }
+    };
+
+    const handleSearchClick = () => {
+        setSearchSymbolVisible(false);
+        setSearchActive(true);
+    };
+
     return (
         <div>
             <nav className="navbar">
                 <span className='navtext'>EVENTOPIA</span>
-                <div className="search-container">
-                    <input type="search" placeholder="Search..." className="search-input" />
+                <div ref={searchContainerRef} className={`search-container ${searchActive ? 'active' : ''}`}>
+                    {searchSymbolVisible && <img src={Searchsymbol} alt="Search" className="searchsymbol" />}
+                    <input type="search" className="search-input" onClick={handleSearchClick} />
                 </div>
                 <ul>
                     <li className="nav-item">SIGN UP</li>
@@ -48,6 +81,13 @@ function Navbar() {
                     <img src={Mlsclogo} alt="" />
                     <div className="line"></div>
                     <img src={Gfglogo} alt="" />
+                </div>
+            </div>
+            <div className="filtercontainer">
+                <p className="filtercontainertext">Connecting College, One Event at a Time</p>
+                <div className="buttons">
+                    <button className={activeButton === 'technical' ? "pressed" : ""} onClick={() => handleClick('technical')}>TECHNICAL</button>
+                    <button className={activeButton === 'cultural' ? "pressed" : ""} onClick={() => handleClick('cultural')}>CULTURAL</button>
                 </div>
             </div>
         </div>
