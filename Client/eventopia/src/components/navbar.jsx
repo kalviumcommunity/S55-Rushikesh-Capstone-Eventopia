@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import './navbar.css';
+import { Link, useNavigate } from 'react-router-dom';
 import Searchsymbol from '../assets/searchsymbol.png'
 import Awslogo from '../assets/awslogo.png'
 import Cbclogo from '../assets/cbclogo.jpg'
@@ -11,6 +11,7 @@ import Swiftlogo from '../assets/swiftlogo.jpg'
 import Cognisancelogo from '../assets/cognisancelogo.jpg'
 import Mlsclogo from '../assets/mlsclogo.jpg'
 import Gfglogo from '../assets/gfglogo.jpg';
+import './navbar.css';
 
 function Navbar() {
     const [activeButton, setActiveButton] = useState(null);
@@ -54,7 +55,7 @@ function Navbar() {
                     <input type="search" className="search-input" onClick={handleSearchClick} />
                 </div>
                 <ul>
-                    <li className="nav-item">SIGN UP</li>
+                    <li className="nav-item"><Link to="/signup">SIGN UP</Link></li>
                     <li className="nav-item">SIGN IN</li>
                     <li className="nav-item">ABOUT US</li>
                 </ul>
