@@ -56,7 +56,7 @@ function Navbar() {
                 </div>
                 <ul>
                     <li className="nav-item"><Link to="/signup">SIGN UP</Link></li>
-                    <li className="nav-item">SIGN IN</li>
+                    <li className="nav-item"><Link to="/signin">SIGN IN</Link></li>
                     <li className="nav-item">ABOUT US</li>
                 </ul>
             </nav>

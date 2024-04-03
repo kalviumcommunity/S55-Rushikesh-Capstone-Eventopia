@@ -4,18 +4,18 @@ body {
     padding: 0;
 }
 
-.navtextsignup {
+.navtextsignin {
     font-size: 30px;
     font-weight: bold;
     color: #007700;
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 5%;
-}   
+    margin-top: 5vw;
+}
 
-form {
+.signinform {
     max-width: 400px;
     margin: 20px auto;
+    margin-top: 8%;
     padding: 20px;
     border-radius: 5px;
 }
@@ -30,7 +30,6 @@ form label.active {
     margin-bottom: 15px;
 }
 
-form input[type="text"],
 form input[type="email"],
 form input[type="password"] {
     width: 100%;
@@ -44,7 +43,6 @@ form input[type="password"] {
     outline: none;
 }
 
-form input[type="text"]:focus,
 form input[type="email"]:focus,
 form input[type="password"]:focus {
     border-bottom: 1px solid #4CAF50;
@@ -65,17 +63,17 @@ form input[type="submit"]:hover {
     background-color: #45a049;
 }
 
-.signinoptiontxt{
+.signupoptiontxt{
     margin-left: 38.5%;
     margin-top: -1.8%;
     font-size: 0.9vw;
 }
 
-.signup-link {
-    color: #007700;
+a{
+    color: inherit;
     text-decoration: none;
 }
 
-.signup-link:hover {
+a:hover {
     text-decoration: underline; 
 }
