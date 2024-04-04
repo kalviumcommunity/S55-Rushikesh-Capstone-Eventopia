@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px; 
+    padding: 20px; 
+    margin-left: 8%;
+    margin-top: 0.5%;
+}
+
+.container {
+    background-color: white;
+    border: 1px solid #090000;
+    box-shadow: 8px 8px rgb(127, 109, 109);
+    width: 17.5vw;
+    height: 22.7vw;
+    font-family: "Kanit";
+    color: #393939;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; 
+    position: relative; 
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    background-color: #f2f2f2; 
+}
+
+.eventheadline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4vw;
+    font-weight: 700;
+    color: #393939;
+    height: 4vw;
+    position: relative;
+    border-bottom: 2px solid #393939; 
+}
+
+.eventheadline::before,
+.eventheadline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; 
+    width: 10px;
+    height: 10px;
+    background-color: #4A4A4A;
+    border-radius: 50%;
+}
+
+.eventheadline::before {
+    top: 55px;
+    left: -5px;
+}
+
+.eventheadline::after {
+    top: 55px;
+    right: -5px;
+}
+
+.eventdetails{
+    margin-left: 6%;
+    position: relative; /* Position relative for absolute positioning of 'FREE' */
+}
+
+.eventdetailsbolden p {
+    font-weight: bold;
+}
+
+.eventdetails .details {
+    font-weight:normal;
+}
+
+.seatsimg {
+    height: 4vh;
+}
+
+.rightarrowimg {
+    height: 1.8vh;  
+}
+
+.seatcontainer{
+    margin-top: -3%;
+}
+
+.seats{
+    position: absolute;
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+.pricetxt{
+    color: green;
+    font-weight: 700;
+    font-size: 1.3vw;
+    margin-left: 10.1%;
+    position: absolute;
+    bottom: 67px;
+    right: 20px;
+}
+
+.containerbtn {
+    display: flex;
+    margin-top: 6%;
+    width: 105%;
+}
+
+.containerbtn button {
+    height: 2.9vw;
+    margin-right: 2vw;
+    font-size: 0.9vw;
+    background-color: white;
+    box-shadow: 3px 3px rgb(127, 109, 109);
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.containerbtn button:active {
+    background-color: #f3f3f3;
+    box-shadow: inset 8px 8px 10px rgba(0, 0, 0, 0.1);
+}
+
+#viewposterbtn{
+    width: 22vw;
+}
+
+#bookbtn{
+    width: 8.9vw;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}

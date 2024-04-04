@@ -10,7 +10,6 @@ body {
 }
 
 .navbar {
-    position: fixed;
     top: 0;
     right: 0;
     width: 100%;
@@ -74,7 +73,7 @@ body {
 }
 
 .navbar ul li {
-    margin-left: 4em;
+    margin-left: 2.8em;
 }
 
 .navbar ul li a {
