@@ -66,7 +66,7 @@ body {
 
 .eventdetails{
     margin-left: 6%;
-    position: relative; /* Position relative for absolute positioning of 'FREE' */
+    position: relative; 
 }
 
 .eventdetailsbolden p {
