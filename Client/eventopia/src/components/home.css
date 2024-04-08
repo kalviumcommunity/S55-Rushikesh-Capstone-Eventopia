@@ -169,6 +169,10 @@ body {
     animation: slideIn 0.7s forwards;
 }
 
+.bookcontainer.show {
+    display: flex;
+}
+
 @keyframes slideIn {
     from {
         transform: translateX(100%);
