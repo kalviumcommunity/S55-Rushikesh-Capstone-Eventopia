@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
 
+:root {
+    --primary-color: #393939;
+    --secondary-color: #4A4A4A;
+    --background-color: #f2f2f2;
+    --border-color: #090000;
+    --box-shadow-color: rgb(127, 109, 109);
+    --button-hover-color: #f3f3f3;
+    --button-shadow-color: rgba(0, 0, 0, 0.1);
+    --overlay-color: rgba(246, 244, 243, 0.708);
+    --confirm-button-bg: black;
+    --cancel-button-bg: #f0f1f0;
+    --button-text-color: #f0f1f0;
+    --text-color: #4e4e4e;
+    --green-color: green;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -16,19 +32,19 @@ body {
 
 .container {
     background-color: white;
-    border: 1px solid #090000;
-    box-shadow: 8px 8px rgb(127, 109, 109);
+    border: 1px solid var(--border-color);
+    box-shadow: 8px 8px var(--box-shadow-color);
     width: 17.5vw;
     height: 22.7vw;
     font-family: "Kanit";
-    color: #393939;
+    color: var(--primary-color);
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; 
     position: relative; 
 }
 
 .container:hover {
     transform: translateY(-5px);
-    background-color: #f2f2f2; 
+    background-color: var(--background-color); 
 }
 
 .eventheadline {
@@ -37,10 +53,10 @@ body {
     align-items: center;
     font-size: 1.4vw;
     font-weight: 700;
-    color: #393939;
+    color: var(--primary-color);
     height: 4vw;
     position: relative;
-    border-bottom: 2px solid #393939; 
+    border-bottom: 2px solid var(--primary-color); 
 }
 
 .eventheadline::before,
@@ -50,7 +66,7 @@ body {
     bottom: -4px; 
     width: 10px;
     height: 10px;
-    background-color: #4A4A4A;
+    background-color: var(--secondary-color);
     border-radius: 50%;
 }
 
@@ -64,7 +80,7 @@ body {
     right: -5px;
 }
 
-.eventdetails{
+.eventdetails {
     margin-left: 6%;
     position: relative; 
 }
@@ -74,7 +90,7 @@ body {
 }
 
 .eventdetails .details {
-    font-weight:normal;
+    font-weight: normal;
 }
 
 .seatsimg {
@@ -85,18 +101,18 @@ body {
     height: 1.8vh;  
 }
 
-.seatcontainer{
+.seatcontainer {
     margin-top: -3%;
 }
 
-.seats{
+.seats {
     position: absolute;
     margin-left: 1%;
     margin-top: 1%;
 }
 
-.pricetxt{
-    color: green;
+.pricetxt {
+    color: var(--green-color);
     font-weight: 700;
     font-size: 1.3vw;
     margin-left: 10.1%;
@@ -116,21 +132,21 @@ body {
     margin-right: 2vw;
     font-size: 0.9vw;
     background-color: white;
-    box-shadow: 3px 3px rgb(127, 109, 109);
+    box-shadow: 3px 3px var(--box-shadow-color);
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .containerbtn button:active {
-    background-color: #f3f3f3;
+    background-color: var(--button-hover-color);
     box-shadow: inset 8px 8px 10px rgba(0, 0, 0, 0.1);
 }
 
-#viewposterbtn{
+#viewposterbtn {
     width: 22vw;
 }
 
-#bookbtn{
+#bookbtn {
     width: 8.9vw;
     display: flex;
     align-items: center;
@@ -151,20 +167,18 @@ body {
     overflow: hidden;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     animation: slideIn 0.7s forwards;
-  }
-  
-  @keyframes slideIn {
+}
+
+@keyframes slideIn {
     from {
-      transform: translateX(100%);
+        transform: translateX(100%);
     }
     to {
-      transform: translateX(0);
+        transform: translateX(0);
     }
-  }
+}
 
-
-
-.myticketbox{
+.myticketbox {
     background-color: #f0f1f0;
     display: flex;
     justify-content: space-around;
@@ -172,24 +186,24 @@ body {
     height: 13%;
 }
 
-.mytickettxt{
+.mytickettxt {
     font-weight: 600;
     font-size: 1.8vw;
     margin-right: 37%;
-  }
+}
 
-  .cross{
+.cross {
     width: 1.7vw;
     height: 1.7vw;
     cursor: pointer;
     margin-right: 3%;
 }
 
-.items{
-   position: absolute;
-   top: 2.8vw;
-   left: 10.5vw;
-   color: #4e4e4e;
+.items {
+    position: absolute;
+    top: 2.8vw;
+    left: 10.5vw;
+    color: var(--text-color);
 }  
 
 .overlay {
@@ -198,15 +212,15 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(246, 244, 243, 0.708); 
+    background-color: var(--overlay-color); 
     z-index: 100; 
-  }
+}
 
-.bookcontainerbtncontainer{
+.bookcontainerbtncontainer {
     background-color: #f0f1f0;
     position: absolute;
     width: 100%;
-    height:13%;
+    height: 13%;
     bottom: 0;
     display: flex;
     align-items: center;
@@ -214,21 +228,21 @@ body {
     gap: 1.9vw;
 }  
 
-.cancelticket{
+.cancelticket {
     height: 2.9vw;
     width: 10vw;
     font-size: 0.9vw;
-    background-color: #f0f1f0;
+    background-color: var(--cancel-button-bg);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }
 
-.confirmticket{
+.confirmticket {
     height: 2.9vw;
     width: 10vw;
-    color: #f0f1f0;
+    color: var(--button-text-color);
     font-size: 0.9vw;
-    background-color: black;
+    background-color: var(--confirm-button-bg);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }
@@ -237,5 +251,3 @@ body {
 .confirmticket:active {
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25); 
 }
-
- 
