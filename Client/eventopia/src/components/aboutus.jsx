@@ -20,9 +20,19 @@ function Aboutus() {
             }
         };
 
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                setSearchSymbolVisible(true);
+                setSearchActive(false);
+            }
+        };
+
         document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("keydown", handleKeyDown);
+
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("keydown", handleKeyDown);
         };
     }, []);
 
@@ -56,7 +66,7 @@ function Aboutus() {
             <div className="horizontal-line"></div>
             <div className="aboutusparas">
                 <p className="aboutusparaupper">We serve as guides and commentators in the realm of events, while also functioning as a platform for club promotions, thereby alleviating the workload for clubs.</p>
-                <p className="aboutusparalower">Whether you are event enthusiat or a club promoter, we're here to shine a light on the most exciting, skillful and impactful activities of our time.</p>
+                <p className="aboutusparalower">Whether you are event enthusiast or a club promoter, we're here to shine a light on the most exciting, skillful, and impactful activities of our time.</p>
             </div>
             <div className="pasteventsdiv">
                 <hr className="shortline" />
