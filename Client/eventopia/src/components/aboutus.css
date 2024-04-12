@@ -38,11 +38,10 @@ body {
     width: 40vw;
     background-color: #f3f3f3;
     border: none;
-    border-bottom: 2px solid transparent; 
     padding: 0.5em;
     font-size: 1.2vw;
     transition: border-color 0.3s ease;
-    border-bottom: 1px solid #4a4a4a;
+    border-bottom: 1px solid transparent; 
 }
 
 .search-input:focus {
