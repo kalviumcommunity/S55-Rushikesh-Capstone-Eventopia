@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Karla', sans-serif;
+    margin: 0;
+}
+
+.navbar {
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: transparent;
+    padding: 0.6%;
+    z-index: 100;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+}
+
+.navtext {
+    font-size: xx-large;
+    color: #007700;
+    margin-left: 4%;
+    font-size: 2.5vw;
+}
+
+.search-container {
+    position: relative;
+    margin-left: 7%;
+}
+
+.search-input {
+    height: 4.3vh;
+    width: 40vw;
+    background-color: #f3f3f3;
+    border: none;
+    border-bottom: 2px solid transparent; 
+    padding: 0.5em;
+    font-size: 1.2vw;
+    transition: border-color 0.3s ease;
+    border-bottom: 1px solid #4a4a4a;
+}
+
+.search-input:focus {
+    outline: none;
+    border-bottom-color: blue;
+}
+
+.searchsymbol {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 8px;
+    height: 20px;
+    opacity: 1;
+}
+
+.search-container.active .searchsymbol {
+    animation: none;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    color: #4a4a4a;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1.2vw;
+}
+
+.navbar ul li {
+    margin-left: 3.6em;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #4a4a4a;
+    font-family: 'Karla', sans-serif;
+    font-size: 1.3vw;
+    font-weight: 500;
+}
+
+.nav-item {
+    position: relative;
+}
+
+@keyframes underlineAppear {
+    0% {
+        width: 0%;
+        left: 0; 
+    }
+    100% {
+        width: 100%;
+        left: 0; 
+    }
+}
+
+@keyframes underlineDisappear {
+    0% {
+        width: 100%;
+        left: 0; 
+    }
+    100% {
+        width: 0%; 
+        left: 100%; 
+    }
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    left: 0; 
+    bottom: 0px; 
+    width: 0%;
+    height: 3px; 
+    background-color:blue; 
+    transition: width 0.3s ease, left 0.3s ease; 
+}
+
+.nav-item:hover::after {
+    animation: underlineAppear 0.3s forwards; 
+}
+
+.nav-item:not(:hover)::after {
+    animation: underlineDisappear 0.3s forwards; 
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 0.07vh;
+    background-color: #4a4a4a;
+    margin-top: 0.20%;
+}
+
+.aboutusparas {
+    margin-left: 12.5%;
+    margin-top: 4%;
+    color: #4a4a4a;
+}
+
+.aboutusparaupper {
+    width: 74vw;
+    font-size: 1.8vw;
+    text-align: center;
+}
+
+.aboutusparalower {
+    width: 74vw;
+    font-size: 1.8vw;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.pasteventsdiv {
+    margin-top: 3%;
+}
+
+.shortline {
+    width: 15vw;
+}
+
+.pasteventstxt {
+    color: #4a4a4a;
+    margin-left: 45%;
+}
+
+.ccubeeventposter {
+    position: absolute;
+    width: 35vw;
+    height: 70vh;
+    margin-left: 50%;
+    margin-top: 3%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); 
+    z-index: 1;
+}
+
+.contentline1{
+    position: absolute;
+    width: 39vw;
+    margin-left: 11.5%;
+    bottom: -6%;
+    border-top: 1px solid black; 
+}
+
+.pin {
+    width: 5vw;
+    position: absolute;
+    left: 48.5%;
+    bottom: -46%;
+    z-index:2;
+}
+
+.ccubegrpphoto {
+    position: absolute;
+    left: 11.5%;
+    bottom: -93%;
+    width: 42vw;
+    height: 57vh;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.537);
+    z-index: 0; 
+}
+
+.contentline2{
+    position: absolute;
+    width: 39vw;
+    margin-left: 50%;
+    bottom: -65%;
+    border-top: 1px solid black; 
+}
+
+.pasteventname{
+    font-size: 1.4vw;
+}
+
+.pasteventcontent{
+    position: absolute;
+    left: 11.5%;
+    bottom: -16%;
+}
