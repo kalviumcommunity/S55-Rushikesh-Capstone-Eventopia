@@ -57,7 +57,7 @@ function Navbar() {
                 <ul>
                     <li className="nav-item"><Link to="/signup">SIGN UP</Link></li>
                     <li className="nav-item"><Link to="/signin">SIGN IN</Link></li>
-                    <li className="nav-item">ABOUT US</li>
+                    <li className="nav-item"><Link to="./aboutus" >ABOUT US</Link></li>
                 </ul>
             </nav>
             <div className="horizontal-line"></div>
