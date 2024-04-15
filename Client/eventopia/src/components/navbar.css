@@ -38,16 +38,15 @@ body {
     width: 40vw;
     background-color: #f3f3f3;
     border: none;
-    border-bottom: 2px solid transparent; 
     padding: 0.5em;
     font-size: 1.2vw;
     transition: border-color 0.3s ease;
-    border-bottom: 1px solid #4a4a4a;
+    border-bottom: 1px solid black;
 }
 
 .search-input:focus {
     outline: none;
-    border-bottom-color: blue;
+    border-bottom-color: green;
 }
 
 .searchsymbol {
@@ -118,7 +117,7 @@ body {
     bottom: 0px; 
     width: 0%;
     height: 3px; 
-    background-color:blue; 
+    background-color:green; 
     transition: width 0.3s ease, left 0.3s ease; 
 }
 
@@ -203,7 +202,7 @@ body {
 }
 
 .search-container.active .search-input:focus {
-    border-bottom-color: blue;
+    border-bottom-color: green;
 }
 
 .buttons button.pressed {

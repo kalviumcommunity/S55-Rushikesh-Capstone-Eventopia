@@ -4,6 +4,9 @@ import Searchsymbol from '../assets/searchsymbol.png'
 import ccubeevent from '../assets/ccubeevent.png'
 import ccubegrpphoto from '../assets/ccubegrpphoto.png'
 import pin from '../assets/pin.png'
+import seats from '../assets/seats.png'
+import ccubelogo from '../assets/ccubelogo.jpg'
+import tedxevent from '../assets/tedxevent.jpg'
 import './aboutus.css'
 
 function Aboutus() {
@@ -50,7 +53,7 @@ function Aboutus() {
     };
 
     return (
-        <div>
+        <div className="section1">
             <nav className="navbar">
                 <span className='navtext'>EVENTOPIA</span>
                 <div ref={searchContainerRef} className={`search-container ${searchActive ? 'active' : ''}`}>
@@ -75,15 +78,30 @@ function Aboutus() {
             </div>
             <div>
                 <div className="pasteventcontent">
-                    <h3 className="pasteventname">Cloud Computing Club</h3>
-                    <br />
-                    <p>16/07/2023</p>
+                    <div className="pasteventnameandlogo">
+                        <h3 className="pasteventname">Cloud Computing Club</h3>
+                        <img src={ccubelogo} alt="ccubelogo" className="ccubelogoaboutus" />
+                    </div>
+                    <p className="pasteventdateccube">16/07/2023</p>
+                    <img src={seats} alt="seats" className="seatsimgaboutus" />
+                    <span className="noofseatsaboutus">100</span>
+                    <p className="address"> [ 5th floor N518 SOE building ]</p>
                 </div>
                 <hr className="contentline1" />
                 <img src={ccubeevent} alt="" className="ccubeeventposter" />
                 <img src={pin} alt="" className="pin" />
-                <hr className="contentline2" />
+                <div className="pasteventinfo">
+                    <h3 className="pasteventinfoname">ANSIBLE</h3>
+                    <hr className="contentline2" />
+                    <p className="pasteventcontent1">Ansible is an open-source automation tool designed for orchestrating, configuring, and managing computer systems. It enables users to automate various IT tasks, such as software provisioning, configuration management, application deployment, and IT orchestration.</p>
+                </div>
                 <img src={ccubegrpphoto} alt="" className="ccubegrpphoto" />
+            </div>
+
+            <div className="section2">
+                <div className="pastevent">
+
+                </div>
             </div>
 
         </div>
