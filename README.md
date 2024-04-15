@@ -11,5 +11,5 @@ Day 2:- Creating a low-fid figma design.
 
 Day 3:- Setting up React application. 
 
-Deployed Link -> https://eventopia-eight.vercel.app/
+Deployed Link -> https://eventopia-mitadt.vercel.app/
 
