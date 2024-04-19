@@ -7,6 +7,8 @@ import pin from '../assets/pin.png'
 import seats from '../assets/seats.png'
 import ccubelogo from '../assets/ccubelogo.jpg'
 import tedxevent from '../assets/tedxevent.jpg'
+import tedxgrpphoto from '../assets/tedxgrpphoto.jpg'
+import tedxlogo from '../assets/tedxlogo.jpg'
 import './aboutus.css'
 
 function Aboutus() {
@@ -76,7 +78,7 @@ function Aboutus() {
                 <h2 className="pasteventstxt">PAST EVENTS</h2>
                 <hr className="shortline" />
             </div>
-            <div>
+            <div className="section1">
                 <div className="pasteventcontent">
                     <div className="pasteventnameandlogo">
                         <h3 className="pasteventname">Cloud Computing Club</h3>
@@ -85,7 +87,7 @@ function Aboutus() {
                     <p className="pasteventdateccube">16/07/2023</p>
                     <img src={seats} alt="seats" className="seatsimgaboutus" />
                     <span className="noofseatsaboutus">100</span>
-                    <p className="address"> [ 5th floor N518 SOE building ]</p>
+                    <p className="address">[ 5th floor N518 SOE building ]</p>
                 </div>
                 <hr className="contentline1" />
                 <img src={ccubeevent} alt="" className="ccubeeventposter" />
@@ -99,8 +101,15 @@ function Aboutus() {
             </div>
 
             <div className="section2">
-                <div className="pastevent">
-
+                <div className="pastevent2">
+                    <img src={tedxevent} alt="tedxevent" className="tedxeventposter" />
+                    <div className="pasteventnameandlogo2">
+                        <h3 className="pasteventname2">TEDx Club</h3> 
+                        <img src={tedxlogo} alt="tedxlogo" className="tedxlogo" />
+                    </div>
+                    <hr className="contentline3" />
+                    <img src={tedxgrpphoto} alt="tedxgrpphoto" className="tedxgrpphoto" />
+                    <img src={pin} alt="pin2" className="pin2" />
                 </div>
             </div>
 
