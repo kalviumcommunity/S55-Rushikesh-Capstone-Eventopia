@@ -1,3 +1,9 @@
+:root {
+    --border-color-default: #4a4a4a;
+    --main-color: #007700;
+    --search-bg-color: #f3f3f3;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
 
 * {
@@ -23,7 +29,7 @@ body {
 
 .navtext {
     font-size: xx-large;
-    color: #007700;
+    color: var(--main-color);
     margin-left: 4%;
     font-size: 2.4em;
 }
@@ -36,17 +42,17 @@ body {
 .search-input {
     height: 4.3vh;
     width: 40vw;
-    background-color: #f3f3f3;
+    background-color: var(--search-bg-color);
     border: none;
     padding: 0.5em;
     font-size: 1.2vw;
     transition: border-color 0.3s ease;
-    border-bottom: 1px solid transparent; 
+    border-bottom: 1px solid var(--border-color-default);
 }
 
 .search-input:focus {
     outline: none;
-    border-bottom-color: blue;
+    border-bottom-color: green;
 }
 
 .searchsymbol {
@@ -66,7 +72,7 @@ body {
     list-style-type: none;
     display: flex;
     align-items: center;
-    color: #4a4a4a;
+    color: var(--border-color-default);
     font-weight: 500;
     cursor: pointer;
     font-size: 1.2vw;
@@ -78,7 +84,7 @@ body {
 
 .navbar ul li a {
     text-decoration: none;
-    color: #4a4a4a;
+    color: var(--border-color-default);
     font-family: 'Karla', sans-serif;
     font-size: 1.3vw;
     font-weight: 500;
@@ -116,8 +122,8 @@ body {
     left: 0; 
     bottom: 0px; 
     width: 0%;
-    height: 3px; 
-    background-color:blue; 
+    height: 3.5px; 
+    background-color: var(--main-color); 
     transition: width 0.3s ease, left 0.3s ease; 
 }
 
@@ -132,14 +138,14 @@ body {
 .horizontal-line {
     width: 100%;
     height: 0.07vh;
-    background-color: #4a4a4a;
+    background-color: var(--border-color-default);
     margin-top: 0.20%;
 }
 
 .aboutusparas {
     margin-left: 12.5%;
     margin-top: 4%;
-    color: #4a4a4a;
+    color: var(--border-color-default);
 }
 
 .aboutusparaupper {
@@ -164,7 +170,7 @@ body {
 }
 
 .pasteventstxt {
-    color: #4a4a4a;
+    color: var(--border-color-default);
     margin-left: 45%;
 }
 
@@ -178,12 +184,60 @@ body {
     z-index: 1;
 }
 
+.pasteventcontent{
+    position: absolute;
+    left: 14.5%;
+    bottom: -16%;
+}
+
+.pasteventnameandlogo{
+    margin-bottom: 30%;
+}
+
+.pasteventname{
+    font-size: 1.8vw;
+}
+
+.pasteventdateccube{
+    position: absolute;
+   bottom: 27%;
+   left: 1.5%;
+}
+
+.ccubelogoaboutus{
+    position: absolute;
+    bottom: 59%;
+    left: 105%;
+    height: 7vh;
+    width: 3.5vw;
+}
+
 .contentline1{
     position: absolute;
-    width: 39vw;
-    margin-left: 11.5%;
+    width: 35.2vw;
+    margin-left: 14.5%;
     bottom: -6%;
     border-top: 1px solid black; 
+}
+
+.seatsimgaboutus{
+    height: 4vh;
+    position: absolute;
+    bottom: 34%;
+    left: 40%;
+}
+
+.noofseatsaboutus{
+    position: absolute;
+    bottom: 38%;
+    left: 52%;
+}
+
+.address{
+    position: absolute;
+    bottom: 28%;
+    left: 100%;
+    width: 80%;
 }
 
 .pin {
@@ -204,20 +258,30 @@ body {
     z-index: 0; 
 }
 
+.pasteventinfo{
+    position: absolute; 
+    bottom: -60%;
+    left: 54%;
+}
+
+.pasteventinfoname{
+    font-size: 1.8vw;
+    margin-bottom: -13%;
+    margin-left: 10%;
+}
+
+.pasteventcontent1 {
+    position: absolute;
+    font-size: 1.3vw;
+    margin-left: 10%;
+    width: 450%;
+    margin-top: 21%;
+
+}
+
 .contentline2{
     position: absolute;
-    width: 39vw;
-    margin-left: 50%;
+    width: 35.2vw;
     bottom: -65%;
     border-top: 1px solid black; 
-}
-
-.pasteventname{
-    font-size: 1.4vw;
-}
-
-.pasteventcontent{
-    position: absolute;
-    left: 11.5%;
-    bottom: -16%;
 }
