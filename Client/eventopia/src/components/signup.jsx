@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
+import axios from 'axios';
 import './signup.css';
 
 const Signup = () => {
@@ -29,7 +30,7 @@ const Signup = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post(`https://five5-aditya-capstone-smartvis.onrender.com/signup`, { username, password });
+            const response = await axios.post(`https://s55-rushikesh-capstone-eventopia.onrender.com`, { username, password });
             if (response.status === 200) {
                 console.log('Form submitted successfully');
                 navigate("/")
