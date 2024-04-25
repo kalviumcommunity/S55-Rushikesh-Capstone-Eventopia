@@ -25,11 +25,29 @@ const Signup = () => {
         console.log('Signing up:', { firstName, lastName, email, password });
     };
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            const response = await axios.post(`https://five5-aditya-capstone-smartvis.onrender.com/signup`, { username, password });
+            if (response.status === 200) {
+                console.log('Form submitted successfully');
+                navigate("/")
+            } else {
+                console.error('Signup failed');
+                setSignupError('Signup failed')
+            }
+        } catch (err) {
+            console.error('An error occurred during the signup:', err);
+            setSignupError('An error occured during the signup')
+        }
+    }
+
     return (
         <div>
             <p className='navtextsignup'>EVENTOPIA </p>
 
-            <form onSubmit={handleSignUp}>
+            <form onSubmit={handleSubmit}>
                 <label>
                     First Name:
                     <input

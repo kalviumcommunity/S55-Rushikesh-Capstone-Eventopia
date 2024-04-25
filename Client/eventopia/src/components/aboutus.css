@@ -271,6 +271,12 @@ body {
     margin-left: 10%;
 }
 
+.contentline2{
+    position: absolute;
+    width: 35.2vw;
+    bottom: -65%;    
+    border-top: 1px solid black; 
+}
 .pasteventcontent1 {
     position: absolute;
     font-size: 1.3vw;
@@ -280,14 +286,7 @@ body {
 
 }
 
-.contentline2{
-    position: absolute;
-    width: 35.2vw;
-    bottom: -65%;    
-    border-top: 1px solid black; 
-}
-
-.pastevent2{
+.pastevent2content{
     position: absolute;
     top: 210%;
     width: 100%
@@ -314,7 +313,9 @@ body {
 
 .tedxlogo{
     position: absolute;
-    width: 50%;
+    top: 14%;
+    left: 101%;
+    width: 60%;
 }
 
 .pin2{
@@ -323,6 +324,32 @@ body {
     left: 48%;
     width: 5%;
     z-index: 2;
+}
+
+.pasteventdatetedx{
+    position: absolute;
+    top: 65%;
+    left: 5%;
+}
+
+.seatsimg2{
+    position: absolute;
+    top: 75%;
+    left: 90%;
+    width: 23%;
+}
+
+.noofseatsaboutus2{
+    position: absolute;
+    top: 80%;
+    left: 115%;
+}
+
+.address2{
+    position: absolute;
+    top: 64%;
+    left: 190%;
+    width: 200%;
 }
 
 .contentline3{
@@ -340,4 +367,26 @@ body {
     width: 40%;
     height: 70%;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.537);
+}
+.pasteven2infoname{
+    position: absolute;
+    bottom: -27%;
+    left: 3.5%;
+    font-size: 1.8vw;
+}
+
+.contentline4{
+    position: absolute;
+    width: 45.2vw;
+    left: 3%;
+    top: 122%;
+    border-top: 1px solid black; 
+}
+
+.pasteventcontent2{
+    position: absolute;
+    bottom: -49%;
+    left: 3.5%;
+    font-size: 1.4vw;
+    width: 40%;
 }
