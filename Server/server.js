@@ -20,10 +20,8 @@ app.get('/', (req, res) => {
 
 app.post('/signup',async (req,res)=>{
     try{
-            const user = {
-                username: req.body.username,
-                password: req.body.password
-            }
+        const {username,password} = req.body
+
 
             const response = await userModel.create(user)
             res.status(200).send(response);

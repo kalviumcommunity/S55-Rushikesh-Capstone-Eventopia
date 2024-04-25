@@ -6,20 +6,10 @@ import './signup.css';
 const Signup = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const handleInputFocus = (e) => {
-        const label = e.target.parentElement.querySelector('label');
-        label.classList.add('active');
-    }
-
-    const handleInputBlur = (e) => {
-        if (e.target.value === '') {
-            const label = e.target.parentElement.querySelector('label');
-            label.classList.remove('active');
-        }
-    };
+    const [signupError, setSignupError] = useState('');
 
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -30,7 +20,7 @@ const Signup = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post(`https://s55-rushikesh-capstone-eventopia.onrender.com`, { username, password });
+            const response = await axios.post(`https://s55-rushikesh-capstone-eventopia.onrender.com/signup`, { username, password });
             if (response.status === 200) {
                 console.log('Form submitted successfully');
                 navigate("/")
@@ -55,8 +45,7 @@ const Signup = () => {
                         type="text"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
-                        onFocus={handleInputFocus}
-                        onBlur={handleInputBlur}
+                        
                         required
                     />
                 </label>
@@ -67,8 +56,7 @@ const Signup = () => {
                         type="text"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
-                        onFocus={handleInputFocus}
-                        onBlur={handleInputBlur}
+                        
                         required
                     />
                 </label>
@@ -79,8 +67,7 @@ const Signup = () => {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        onFocus={handleInputFocus}
-                        onBlur={handleInputBlur}
+                       
                         required
                     />
                 </label>
@@ -91,8 +78,7 @@ const Signup = () => {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        onFocus={handleInputFocus}
-                        onBlur={handleInputBlur}
+                        
                         required
                     />
                 </label>
