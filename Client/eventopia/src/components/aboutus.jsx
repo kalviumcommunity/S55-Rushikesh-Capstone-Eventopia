@@ -101,15 +101,22 @@ function Aboutus() {
             </div>
 
             <div className="section2">
-                <div className="pastevent2">
+                <div className="pastevent2content">
                     <img src={tedxevent} alt="tedxevent" className="tedxeventposter" />
                     <div className="pasteventnameandlogo2">
                         <h3 className="pasteventname2">TEDx Club</h3> 
                         <img src={tedxlogo} alt="tedxlogo" className="tedxlogo" />
+                        <p className="pasteventdatetedx">25/09/2023</p>
+                        <img src={seats} alt="seats" className="seatsimg2" />
+                        <span className="noofseatsaboutus2">150</span>
+                        <p className="address2">[ 6th floor auditorium SOE building ]</p>
                     </div>
                     <hr className="contentline3" />
                     <img src={tedxgrpphoto} alt="tedxgrpphoto" className="tedxgrpphoto" />
-                    <img src={pin} alt="pin2" className="pin2" />
+                    <img src={pin} alt="pin2" className="pin2" />  
+                    <h3 className="pasteven2infoname">TEZOS</h3> 
+                    <hr className="contentline4" />
+                    <p className="pasteventcontent2">Tezos is a decentralized blockchain platform that allows for the development and deployment of smart contracts and decentralized applications (dApps). It was created to address some of the shortcomings and governance issues present in other blockchain platforms like Ethereum.</p>
                 </div>
             </div>
 
