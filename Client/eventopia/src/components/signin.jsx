@@ -6,18 +6,11 @@ import './signin.css';
 const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const [signupError, setSignupError] = useState('');
 
-    const handleInputFocus = (e) => {
-        const label = e.target.parentElement.querySelector('label');
-        label.classList.add('active');
-    }
 
-    const handleInputBlur = (e) => {
-        if (e.target.value === '') {
-            const label = e.target.parentElement.querySelector('label');
-            label.classList.remove('active');
-        }
-    };
+
 
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -29,7 +22,7 @@ const Signin = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post(`https://s55-rushikesh-capstone-eventopia.onrender.com`, { username, password });
+            const response = await axios.post(`https://s55-rushikesh-capstone-eventopia.onrender.com/signin`, { username, password });
             if (response.status === 200) {
                 console.log('Login successful');
                 navigate("/")
@@ -55,8 +48,7 @@ const Signin = () => {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        onFocus={handleInputFocus}
-                        onBlur={handleInputBlur}
+                     
                         required
                     />
                 </label>
@@ -67,8 +59,7 @@ const Signin = () => {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        onFocus={handleInputFocus}
-                        onBlur={handleInputBlur}
+                       
                         required
                     />
                 </label>
