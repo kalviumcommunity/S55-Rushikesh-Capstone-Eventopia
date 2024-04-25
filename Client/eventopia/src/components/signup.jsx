@@ -100,7 +100,8 @@ const Signup = () => {
                 <input type="submit" value="Sign Up" />
             </form>
             <p className='signinoptiontxt'>Already a member? <Link to="/signin" className="signup-link">Sign In</Link></p> 
-        </div>
+            <div></div>
+        </div> 
     );
 };
 
