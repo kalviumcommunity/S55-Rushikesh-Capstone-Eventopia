@@ -11,11 +11,6 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [signupError, setSignupError] = useState('');
 
-    const handleSignUp = (e) => {
-        e.preventDefault();
-        console.log('Signing up:', { firstName, lastName, email, password });
-    };
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
