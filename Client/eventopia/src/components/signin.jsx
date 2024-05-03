@@ -22,7 +22,7 @@ const Signin = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post(`https://s55-rushikesh-capstone-eventopia.onrender.com/signin`, { username, password });
+            const response = await axios.post(`https://s55-rushikesh-capstone-eventopia.onrender.com/signin`, { firstName,email, password });
             if (response.status === 200) {
                 console.log('Login successful');
                 navigate("/")
