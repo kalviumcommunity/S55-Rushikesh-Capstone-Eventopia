@@ -16,7 +16,7 @@ const Signup = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post(`https://s55-rushikesh-capstone-eventopia.onrender.com/signup`, { username, password });
+            const response = await axios.post(`https://s55-rushikesh-capstone-eventopia.onrender.com/signup`, { firstName,email,password });
             if (response.status === 200) {
                 console.log('Form submitted successfully');
                 navigate('/')
