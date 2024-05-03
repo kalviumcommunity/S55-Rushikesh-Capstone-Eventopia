@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { getDataFromDatabase } = require("./db.js");
 const { dataModel } = require("./schema.js");
-const { userModel } = require("./userschema.js");
+const {userModel} = require("./userschema.js");
+router.use(express.json())
 
 router.get("/data", async (req, res) => {
   try {
@@ -31,9 +32,10 @@ router.get('/', (req, res) => {
 
 router.post('/signup', async (req, res) => {
   try {
-    const { username, password } = req.body;
-    const response = await userModel.create({ username, password });
+    const {username , password } = req.body;
+    const response = await userModel.create({username , password});
     res.status(200).send(response);
+    console.log(response)
   } catch (err) {
     console.log("Error in signing up user", err);
     res.status(500).send("Error in signing up user");

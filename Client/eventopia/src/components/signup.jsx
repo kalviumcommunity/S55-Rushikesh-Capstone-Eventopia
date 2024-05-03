@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
 import './signup.css';
 
@@ -10,11 +10,7 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [signupError, setSignupError] = useState('');
-
-    const handleSignUp = (e) => {
-        e.preventDefault();
-        console.log('Signing up:', { firstName, lastName, email, password });
-    };
+    const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -23,7 +19,7 @@ const Signup = () => {
             const response = await axios.post(`https://s55-rushikesh-capstone-eventopia.onrender.com/signup`, { username, password });
             if (response.status === 200) {
                 console.log('Form submitted successfully');
-                navigate("/")
+                navigate('/')
             } else {
                 console.error('Signup failed');
                 setSignupError('Signup failed')
