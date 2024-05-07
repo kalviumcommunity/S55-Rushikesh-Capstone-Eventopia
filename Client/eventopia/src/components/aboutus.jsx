@@ -57,7 +57,7 @@ function Aboutus() {
     return (
         <div className="section1">
             <nav className="navbar">
-                <span className='navtext'>EVENTOPIA</span>
+                <Link to="/" className='navtext'>EVENTOPIA</Link> 
                 <div ref={searchContainerRef} className={`search-container ${searchActive ? 'active' : ''}`}>
                     {searchSymbolVisible && <img src={Searchsymbol} alt="Search" className="searchsymbol" />}
                     <input type="search" className="search-input" onClick={handleSearchClick} />

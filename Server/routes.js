@@ -1,6 +1,8 @@
 const express = require("express");
 const { body, validationResult } = require("express-validator");
 const router = express.Router();
+const { getDataFromDatabase } = require("./db.js");
+const { dataModel } = require("./schema.js");
 const { userModel } = require("./userschema.js");
 router.use(express.json());
 
@@ -10,17 +12,6 @@ router.get("/data", async (req, res) => {
     res.json(data);
   } catch (error) {
     console.error("Error retrieving data from the database:", error);
-    res.status(500).json({ error: "Failed to fetch data" });
-  }
-});
-
-router.get('/list', async (req, res) => {
-  try {
-    const test = await dataModel.find({});
-    console.log(test);
-    res.send(test);
-  } catch (err) {
-    console.log(err);
     res.status(500).json({ error: "Failed to fetch data" });
   }
 });
