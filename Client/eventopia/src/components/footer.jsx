@@ -1,13 +1,12 @@
 import React from 'react';
+import './footer.css'
 
-// Functional Component
 const MyComponent = (props) => {
-  // Your component logic here
 
   return (
     <div>
      <hr className='footerline'/>
-     <div>
+     <div className='myComponentFooterText'>
         Made with ❤️ by Rushikesh
      </div>
     </div>
@@ -15,5 +14,3 @@ const MyComponent = (props) => {
 };
 
 export default MyComponent;
-
-

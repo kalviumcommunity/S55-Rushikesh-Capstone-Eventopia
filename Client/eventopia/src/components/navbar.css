@@ -26,6 +26,7 @@ body {
     color: #007700;
     margin-left: 4%;
     font-size: 2.5vw;
+    cursor: pointer;
 }
 
 .search-container {
@@ -41,7 +42,6 @@ body {
     padding: 0.5em;
     font-size: 1.2vw;
     transition: border-color 0.3s ease;
-    border-bottom: 1px solid black;
 }
 
 .search-input:focus {
