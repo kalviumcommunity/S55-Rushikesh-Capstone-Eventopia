@@ -6,7 +6,7 @@ const MyComponent = (props) => {
   return (
     <div>
      <hr className='footerline'/>
-     <div className='footertext'>
+     <div className='myComponentFooterText'>
         Made with ❤️ by Rushikesh
      </div>
     </div>
@@ -14,5 +14,3 @@ const MyComponent = (props) => {
 };
 
 export default MyComponent;
-
-
