@@ -1,6 +1,5 @@
 const express = require("express");
 const { body, validationResult } = require("express-validator");
-const bcrypt = require("bcrypt");
 const router = express.Router();
 const { getDataFromDatabase } = require("./db.js");
 const { dataModel } = require("./schema.js");
@@ -31,8 +30,7 @@ router.post(
 
     try {
       const { firstName, email, password } = req.body;
-      const hashedPassword = await bcrypt.hash(password, 10); 
-      const response = await userModel.create({ firstName, email, password: hashedPassword }); 
+      const response = await userModel.create({ firstName, email, password });
       res.status(200).send(response);
       console.log(response);
     } catch (err) {
@@ -51,8 +49,7 @@ router.post('/signin', async (req, res) => {
       return res.status(401).send("Invalid email or password");
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password); 
-    if (!passwordMatch) {
+    if (user.password !== password) {
       return res.status(401).send("Invalid email or password");
     }
 
