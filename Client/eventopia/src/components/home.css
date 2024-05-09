@@ -255,3 +255,11 @@ body {
 .confirmticket:active {
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25); 
 }
+
+#viewposterbtn img {
+    width: 24px; /* Adjust the width and height as needed */
+    height: 24px;
+    margin-right: 5px; /* Adjust margin as needed for spacing */
+    vertical-align: middle;
+  }
+  
