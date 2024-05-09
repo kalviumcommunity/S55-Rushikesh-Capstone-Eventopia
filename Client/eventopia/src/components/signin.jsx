@@ -10,32 +10,28 @@ const Signin = () => {
     const [signupError, setSignupError] = useState('');
 
 
-
-
     const handleSignIn = (e) => {
         e.preventDefault();
         console.log('Signing in:', { email, password });
     };
 
-    
-    const handleSubmit = async(event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-
+    
         try {
-            const response = await axios.post(`https://s55-rushikesh-capstone-eventopia.onrender.com/signin`, { firstName,email, password });
+            const response = await axios.post(`https://s55-rushikesh-capstone-eventopia.onrender.com/signin`, { email, password });
             if (response.status === 200) {
                 console.log('Login successful');
                 navigate("/")
             } else {
                 console.error('Login failed');
-                setloginError('Login failed')
+                setSignupError('Login failed');
             }
         } catch (err) {
             console.error('An error occurred during the login:', err);
-            setloginError('An error occured during the login')
+            setSignupError('An error occurred during the login');
         }
-
-    }
+    }   
 
     return (
         <div>
