@@ -11,7 +11,7 @@
     const [showBookContainer, setShowBookContainer] = useState(false);
     const [events, setEvents] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [posterUrl, setPosterUrl] = useState(""); // Added state to hold the poster URL
+    const [posterUrl, setPosterUrl] = useState(""); 
 
     const toggleBookContainer = (show) => {
       setShowBookContainer(show);
@@ -106,7 +106,7 @@
 
                 </div>
                 <div className="containerbtn">
-                  <button id='viewposterbtn' onClick={() => setPosterUrl(event.image)}>VIEW POSTER</button> {/* Update onClick handler */}
+                  <button id='viewposterbtn' onClick={() => setPosterUrl(event.image)}>VIEW POSTER</button>
                   <button id='bookbtn' onClick={() => toggleBookContainer(true)}>
                     <span className='booktxt'>BOOK</span>
                     <img src={Rightarrow} alt="" className='rightarrowimg' />
@@ -117,7 +117,7 @@
           ))}
         </div>
         <Footer />
-        {posterUrl && ( /* Conditionally render the poster */
+        {posterUrl && ( 
           <div className="poster-overlay">
             <img src={posterUrl} alt="Poster" className="poster-image" />
             <button onClick={() => setPosterUrl("")} className="close-poster-button">
