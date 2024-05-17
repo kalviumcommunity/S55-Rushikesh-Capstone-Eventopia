@@ -4,6 +4,7 @@ const router = express.Router();
 const { getDataFromDatabase } = require("./db.js");
 const { dataModel } = require("./schema.js");
 const { userModel } = require("./userschema.js");
+const jwt = require('jsonwebtoken');
 router.use(express.json());
 
 router.get("/data", async (req, res) => {
@@ -59,5 +60,21 @@ router.post('/signin', async (req, res) => {
     res.status(500).send("Login failed");
   }
 });
+
+router.post('/auth', async(req,res) => {
+  const {username,password} = req.body
+  const user = {
+      "username" : username,
+      "password" : password
+  }
+
+  try{
+      const ACCESS_TOKEN = jwt.sign(user,process.env.ACCESS_TOKEN_SECRET)
+      res.json({"accessToken" : ACCESS_TOKEN})
+  }
+  catch(err){
+      console.log(err)
+  }
+})
 
 module.exports = router;

@@ -257,9 +257,9 @@ body {
 }
 
 #viewposterbtn img {
-    width: 24px; /* Adjust the width and height as needed */
+    width: 24px;
     height: 24px;
-    margin-right: 5px; /* Adjust margin as needed for spacing */
+    margin-right: 5px; 
     vertical-align: middle;
   }
   
