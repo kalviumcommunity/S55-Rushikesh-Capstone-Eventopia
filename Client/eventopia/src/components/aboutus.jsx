@@ -9,6 +9,7 @@ import ccubelogo from '../assets/ccubelogo.jpg'
 import tedxevent from '../assets/tedxevent.jpg'
 import tedxgrpphoto from '../assets/tedxgrpphoto.jpg'
 import tedxlogo from '../assets/tedxlogo.jpg'
+import Footer from './footer'
 import './aboutus.css'
 
 function Aboutus() {
@@ -57,7 +58,7 @@ function Aboutus() {
     return (
         <div className="section1">
             <nav className="navbar">
-                <Link to="/" className='navtext'>EVENTOPIA</Link> 
+                <Link to="/" className='navtext'>EVENTOPIA</Link>
                 <div ref={searchContainerRef} className={`search-container ${searchActive ? 'active' : ''}`}>
                     {searchSymbolVisible && <img src={Searchsymbol} alt="Search" className="searchsymbol" />}
                     <input type="search" className="search-input" onClick={handleSearchClick} />
@@ -104,7 +105,7 @@ function Aboutus() {
                 <div className="pastevent2content">
                     <img src={tedxevent} alt="tedxevent" className="tedxeventposter" />
                     <div className="pasteventnameandlogo2">
-                        <h3 className="pasteventname2">TEDx Club</h3> 
+                        <h3 className="pasteventname2">TEDx Club</h3>
                         <img src={tedxlogo} alt="tedxlogo" className="tedxlogo" />
                         <p className="pasteventdatetedx">25/09/2023</p>
                         <img src={seats} alt="seats" className="seatsimg2" />
@@ -113,13 +114,18 @@ function Aboutus() {
                     </div>
                     <hr className="contentline3" />
                     <img src={tedxgrpphoto} alt="tedxgrpphoto" className="tedxgrpphoto" />
-                    <img src={pin} alt="pin2" className="pin2" />  
-                    <h3 className="pasteven2infoname">TEZOS</h3> 
+                    <img src={pin} alt="pin2" className="pin2" />
+                    <h3 className="pasteven2infoname">TEZOS</h3>
                     <hr className="contentline4" />
                     <p className="pasteventcontent2">Tezos is a decentralized blockchain platform that allows for the development and deployment of smart contracts and decentralized applications (dApps). It was created to address some of the shortcomings and governance issues present in other blockchain platforms like Ethereum.</p>
+                    <hr className='footerline' />
+                    
                 </div>
             </div>
-
+            <div className='footertext'>
+                        Made with ❤️ by Rushikesh
+                    </div>
+           
         </div>
     );
 }

@@ -391,3 +391,22 @@ body {
     font-size: 1.4vw;
     width: 40%;
 }
+
+.footerline {
+    margin-top: 5%;
+    border: none;
+    border-top: 3px solid rgb(70, 70, 70);
+    width: 80%; 
+    margin-left: 9.5%; 
+}
+
+.footertext {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    padding: 10px 0;
+}
+
