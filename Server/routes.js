@@ -61,20 +61,21 @@ router.post('/signin', async (req, res) => {
   }
 });
 
-router.post('/auth', async(req,res) => {
-  const {username,password} = req.body
+router.post('/auth', async (req, res) => {
+  const { username, password } = req.body;
   const user = {
-      "username" : username,
-      "password" : password
-  }
+    username: username,
+    password: password
+  };
 
-  try{
-      const ACCESS_TOKEN = jwt.sign(user,process.env.ACCESS_TOKEN_SECRET)
-      res.json({"accessToken" : ACCESS_TOKEN})
+  try {
+    const ACCESS_TOKEN = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
+    res.json({ accessToken: ACCESS_TOKEN });
+  } catch (err) {
+    console.log("Error generating access token", err);
+    res.status(500).json({ error: "Failed to generate access token" });
   }
-  catch(err){
-      console.log(err)
-  }
-})
+});
+
 
 module.exports = router;
