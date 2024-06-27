@@ -117,15 +117,13 @@ function Aboutus() {
                     <img src={pin} alt="pin2" className="pin2" />
                     <h3 className="pasteven2infoname">TEZOS</h3>
                     <hr className="contentline4" />
-                    <p className="pasteventcontent2">Tezos is a decentralized blockchain platform that allows for the development and deployment of smart contracts and decentralized applications (dApps). It was created to address some of the shortcomings and governance issues present in other blockchain platforms like Ethereum.</p>
-                    <hr className='footerline' />
-                    
+                    <p className="pasteventcontent2">Tezos is a decentralized blockchain platform that allows for the development and deployment of smart contracts and decentralized applications (dApps). It was created to address some of the shortcomings and governance issues present in other blockchain platforms like Ethereum.</p>   
                 </div>
             </div>
-            <div className='footertext'>
-                        Made with ❤️ by Rushikesh
-                    </div>
-           
+            <hr className="footerlineaboutus" />
+            <p className="footertextaboutus">
+                Made with ❤️ by Rushikesh
+            </p>    
         </div>
     );
 }

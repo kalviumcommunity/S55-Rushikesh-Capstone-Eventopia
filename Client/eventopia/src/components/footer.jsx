@@ -1,16 +1,14 @@
 import React from 'react';
-import './footer.css'
 
-const MyComponent = (props) => {
+function Footer() {
+    return (
+        <footer className="footer">
+            <hr className="footerline" />
+            <p className="footertext">
+                Made with ❤️ by Rushikesh
+            </p>
+        </footer>
+    );
+}
 
-  return (
-    <div>
-     <hr className='footerline'/>
-     <div className='footertext'>
-        Made with ❤️ by Rushikesh
-     </div>
-    </div>
-  );
-};
-
-export default MyComponent;
+export default Footer;

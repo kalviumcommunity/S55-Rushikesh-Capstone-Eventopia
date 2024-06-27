@@ -36,6 +36,11 @@ body {
     text-decoration: none;
 }
 
+.navtext:hover {
+    text-decoration: none; 
+}
+
+
 .search-container {
     position: relative;     
     margin-left: 7%;
@@ -392,15 +397,15 @@ body {
     width: 40%;
 }
 
-.footerline {
-    margin-top: 5%;
+.footerlineaboutus {
+    margin-top: 140%;
     border: none;
     border-top: 3px solid rgb(70, 70, 70);
     width: 80%; 
     margin-left: 9.5%; 
 }
 
-.footertext {
+.footertextaboutus {
     margin-top: 5%;
     margin-bottom: 5%;
     text-align: center;
@@ -409,4 +414,3 @@ body {
     color: #333;
     padding: 10px 0;
 }
-
