@@ -11,5 +11,5 @@ Day 2:- Creating a low-fid figma design.
 
 Day 3:- Setting up React application. 
 
-Deployed Link -> https://eventopiamitadt.netlify.app/
+Deployed Link -> [https://eventopiamitadt.netlify.app/](https://eventopia-mitadt.netlify.app/)
 
