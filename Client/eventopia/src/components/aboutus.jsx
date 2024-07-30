@@ -1,22 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from 'react-router-dom';
-import Searchsymbol from '../assets/searchsymbol.png'
-import ccubeevent from '../assets/ccubeevent.png'
-import ccubegrpphoto from '../assets/ccubegrpphoto.png'
-import pin from '../assets/pin.png'
-import seats from '../assets/seats.png'
-import ccubelogo from '../assets/ccubelogo.jpg'
-import tedxevent from '../assets/tedxevent.jpg'
-import tedxgrpphoto from '../assets/tedxgrpphoto.jpg'
-import tedxlogo from '../assets/tedxlogo.jpg'
-import Footer from './footer'
-import './aboutus.css'
+import { Link, useNavigate } from 'react-router-dom';
+import Searchsymbol from '../assets/searchsymbol.png';
+import ccubeevent from '../assets/ccubeevent.png';
+import ccubegrpphoto from '../assets/ccubegrpphoto.png';
+import pin from '../assets/pin.png';
+import seats from '../assets/seats.png';
+import ccubelogo from '../assets/ccubelogo.jpg';
+import tedxevent from '../assets/tedxevent.jpg';
+import tedxgrpphoto from '../assets/tedxgrpphoto.jpg';
+import tedxlogo from '../assets/tedxlogo.jpg';
+import Footer from './footer';
+import './aboutus.css';
 
 function Aboutus() {
     const [activeButton, setActiveButton] = useState(null);
     const [searchSymbolVisible, setSearchSymbolVisible] = useState(true);
     const [searchActive, setSearchActive] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const searchContainerRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -42,6 +44,15 @@ function Aboutus() {
         };
     }, []);
 
+    useEffect(() => {
+        const username = localStorage.getItem('username');
+        if (username && username !== "") {
+            setIsLoggedIn(true);
+        } else {
+            setIsLoggedIn(false);
+        }
+    }, []);
+
     const handleClick = (button) => {
         if (button === activeButton) {
             setActiveButton(null);
@@ -55,6 +66,13 @@ function Aboutus() {
         setSearchActive(true);
     };
 
+    const handleLogout = () => {
+        localStorage.removeItem('username');
+        localStorage.removeItem('password');
+        setIsLoggedIn(false);
+        navigate('/');
+    };
+
     return (
         <div className="section1">
             <nav className="navbar">
@@ -64,15 +82,21 @@ function Aboutus() {
                     <input type="search" className="search-input" onClick={handleSearchClick} />
                 </div>
                 <ul>
-                    <li className="nav-item"><Link to="/signup">SIGN UP</Link></li>
-                    <li className="nav-item"><Link to="/signin">SIGN IN</Link></li>
+                    {isLoggedIn ? (
+                        <li className="nav-item" id="logoutbtn"><button onClick={handleLogout}>LOGOUT</button></li>
+                    ) : (
+                        <>
+                            <li className="nav-item"><Link to="/signup">SIGN UP</Link></li>
+                            <li className="nav-item"><Link to="/signin">SIGN IN</Link></li>
+                        </>
+                    )}
                     <li className="nav-item"><Link to="/aboutus">ABOUT US</Link></li>
                 </ul>
             </nav>
             <div className="horizontal-line"></div>
             <div className="aboutusparas">
                 <p className="aboutusparaupper">We serve as guides and commentators in the realm of events, while also functioning as a platform for club promotions, thereby alleviating the workload for clubs.</p>
-                <p className="aboutusparalower">Whether you are event enthusiast or a club promoter, we're here to shine a light on the most exciting, skillful, and impactful activities of our time.</p>
+                <p className="aboutusparalower">Whether you are an event enthusiast or a club promoter, we're here to shine a light on the most exciting, skillful, and impactful activities of our time.</p>
             </div>
             <div className="pasteventsdiv">
                 <hr className="shortline" />

@@ -10,6 +10,8 @@ const Signin = () => {
     const navigate = useNavigate();
 
     const handleAuth = async () => {
+        localStorage.setItem('username',email)
+        localStorage.setItem('password', password)
         alert("SUCCCESSS")
         const access = axios.post('http://localhost:3000/auth', { username: email, password: password })
             .then(access => {
@@ -28,6 +30,7 @@ const Signin = () => {
                 handleAuth();
                 console.log('Login successful');
                 navigate('/'); 
+                localStorage.setItem("login",true)
             } else {
                 console.error('Login failed');
                 setSigninError('Invalid credentials');

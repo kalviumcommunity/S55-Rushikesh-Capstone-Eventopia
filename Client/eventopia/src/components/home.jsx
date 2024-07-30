@@ -6,6 +6,7 @@ import Seats from '../assets/seats.png';
 import Rightarrow from '../assets/rightarrow.png';
 import Cross from '../assets/cross.png';
 import './home.css';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
   const [showBookContainer, setShowBookContainer] = useState(false);
@@ -14,6 +15,12 @@ function Home() {
   const [posterUrl, setPosterUrl] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [showPoster, setShowPoster] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState(null); 
+  const [searchQuery, setSearchQuery] = useState(''); 
+  const [searchResults, setSearchResults] = useState([]); 
+  const navigate = useNavigate();
+  const username = localStorage.getItem('username');
 
   const toggleBookContainer = (show) => {
     setShowBookContainer(show);
@@ -48,6 +55,13 @@ function Home() {
     };
   }, [showBookContainer, showPoster]);
 
+  useEffect(() => {
+    const token = document.cookie.split(';').find(cookie => cookie.trim().startsWith('ACCESS_TOKEN='));
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   const technicalEvents = [
     "DSA BOOTCAMP 2.0",
     "BATTLESHIP",
@@ -69,6 +83,17 @@ function Home() {
       ? events.filter(event => culturalEvents.includes(event.eventname))
       : events;
 
+  useEffect(() => {
+    if (searchQuery) {
+      const results = events.filter(event =>
+        event.eventname.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSearchResults(results);
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchQuery, events]);
+
   const openPoster = (imageUrl) => {
     setPosterUrl(imageUrl);
     setShowPoster(true); 
@@ -77,6 +102,16 @@ function Home() {
   const closePoster = () => {
     setPosterUrl("");
     setShowPoster(false); 
+  };
+
+  const handleBookClick = () => {
+    const username = localStorage.getItem('username');
+    if (username) {
+      toggleBookContainer(true);
+    } else {
+      alert('Please log in to book an event.');
+      navigate('/signin');
+    }
   };
 
   return (
@@ -94,44 +129,57 @@ function Home() {
               <span className='items'>1 item</span>
             </div>
             <div className='grid-container'>
-              <div className='container'>
-                <div className='eventheadline'>
-                  <span>DSA BOOTCAMP 2.0</span>
-                </div>
-                <div className='eventdetails'>
-                  <div className='eventdetailsbolden'>
-                    <p>DATE: <span className='details'>12th-15th March</span> </p>
-                    <p>LOCATION: <span className='details'>SOC 519</span> </p>
-                    <p>TIMING: <span className='details'>10AM-12:30PM</span></p>
-                    <p>ORGANIZERS: <span className='details'>GFG, CODECHEF</span></p>
+              {selectedEvent ? ( 
+                <div className='container'>
+                  <div className='eventheadline'>
+                    <span>{selectedEvent.eventname}</span>
                   </div>
-                  <div className='seatcontainer'><span><img src={Seats} alt="" className='seatsimg' /><span className='seats'>150</span></span><span className='pricetxt'>FREE</span></div>
-                  <div className="containerbtn">
-                    <button id='viewposterbtn' onClick={() => openPoster('https://example.com/poster1.jpg')}>VIEW POSTER</button>
-                    <button id='bookbtn' onClick={() => toggleBookContainer(true)}> <span className='booktxt'>BOOK</span> <img src={Rightarrow} alt="" className='rightarrowimg' /></button>
+                  <div className='eventdetails'>
+                    <div className='eventdetailsbolden'>
+                      <p>DATE: <span className='details'>{selectedEvent.date}</span></p>
+                      <p>LOCATION: <span className='details'>{selectedEvent.location}</span></p>
+                      <p>TIMING: <span className='details'>{selectedEvent.timing}</span></p>
+                      <p>ORGANIZERS: <span className='details'>{selectedEvent.organizers}</span></p>
+                    </div>
+                    <div className='seatcontainer'>
+                      <span>
+                        <img src={Seats} alt="" className='seatsimg' />
+                        <span className='seats'>{selectedEvent.seats}</span>
+                      </span>
+                      <span className='pricetxt'>{selectedEvent.free ? 'FREE' : 'PAID'}</span>
+                    </div>
+                    <div className="containerbtn">
+                      <button id='viewposterbtn' onClick={() => openPoster(selectedEvent.image)}>VIEW POSTER</button>
+                      <button id='bookbtn' onClick={handleBookClick}>
+                        <span className='booktxt'>BOOK</span>
+                        <img src={Rightarrow} alt="" className='rightarrowimg' />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                <div>No event selected</div> 
+              )}
             </div>
             <div className='bookcontainerbtncontainer'>
-              <button className='cancelticket' onClick={() => toggleBookContainer(false)} >CANCEL TICKET</button>
+              <button className='cancelticket' onClick={() => toggleBookContainer(false)}>CANCEL TICKET</button>
               <button className='confirmticket'>CONFIRM TICKET</button>
             </div>
           </div>
-          <Navbar onCategorySelect={setSelectedCategory} />
+          <Navbar onCategorySelect={setSelectedCategory} setSearchQuery={setSearchQuery} />
 
           <div className='grid-container'>
-            {filteredEvents.map(event => (
+            {(searchQuery ? searchResults : filteredEvents).map(event => (
               <div key={event._id} className='container'>
                 <div className='eventheadline'>
                   <span>{event.eventname}</span>
-                </div>
+                </div> 
                 <div className='eventdetails'>
                   <div className='eventdetailsbolden'>
-                    <p>DATE: <span className='details'>{event.date}</span> </p>
-                    <p>LOCATION: <span className='details'>{event.location}</span> </p>
+                    <p>DATE: <span className='details'>{event.date}</span></p>
+                    <p>LOCATION: <span className='details'>{event.location}</span></p>
                     <p>TIMING: <span className='details'>{event.timing}</span></p>
-                    <p>ORGANIZERS: <span className='details'>{event.organizers}</span></p>
+                    <p>ORGANIZERS: <span className='details'>{event.organizers}</span></p>  
                   </div>
                   <div className='seatcontainer'>
                     <span>
@@ -142,7 +190,7 @@ function Home() {
                   </div>
                   <div className="containerbtn">
                     <button id='viewposterbtn' onClick={() => openPoster(event.image)}>VIEW POSTER</button>
-                    <button id='bookbtn' onClick={() => toggleBookContainer(true)}>
+                    <button id='bookbtn' onClick={() => { setSelectedEvent(event); handleBookClick(); }}>
                       <span className='booktxt'>BOOK</span>
                       <img src={Rightarrow} alt="" className='rightarrowimg' />
                     </button>
@@ -160,7 +208,7 @@ function Home() {
             </div>
           )}
           <hr className="footerline" />
-          <p className="footertext">
+          <p className="footertext"> 
             Made with ❤️ by Rushikesh
           </p>
         </>
