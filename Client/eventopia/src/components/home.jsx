@@ -5,6 +5,9 @@ import Footer from './footer';
 import Seats from '../assets/seats.png';
 import Rightarrow from '../assets/rightarrow.png';
 import Cross from '../assets/cross.png';
+import Lottie from 'react-lottie';
+import * as animationData from '../assets/animation.json';
+import confetti from 'canvas-confetti';
 import './home.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,14 +19,20 @@ function Home() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [showPoster, setShowPoster] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState(null); 
-  const [searchQuery, setSearchQuery] = useState(''); 
-  const [searchResults, setSearchResults] = useState([]); 
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [isTicketConfirmed, setIsTicketConfirmed] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [isBookButtonRemoved, setIsBookButtonRemoved] = useState(false); 
   const navigate = useNavigate();
   const username = localStorage.getItem('username');
 
   const toggleBookContainer = (show) => {
     setShowBookContainer(show);
+    if (show) {
+      setIsBookButtonRemoved(true); 
+    }
   };
 
   useEffect(() => {
@@ -96,12 +105,12 @@ function Home() {
 
   const openPoster = (imageUrl) => {
     setPosterUrl(imageUrl);
-    setShowPoster(true); 
+    setShowPoster(true);
   };
 
   const closePoster = () => {
     setPosterUrl("");
-    setShowPoster(false); 
+    setShowPoster(false);
   };
 
   const handleBookClick = () => {
@@ -111,6 +120,27 @@ function Home() {
     } else {
       alert('Please log in to book an event.');
       navigate('/signin');
+    }
+  };
+
+  const confirmTicket = () => {
+    setIsTicketConfirmed(true);
+    setShowConfetti(true);
+    toggleBookContainer(false);
+    setTimeout(() => setShowConfetti(false), 3000); 
+    confetti({
+      particleCount: 200,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  };
+
+  const defaultOptions = {
+    loop: false,
+    autoplay: true,
+    animationData: animationData.default,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
     }
   };
 
@@ -129,7 +159,7 @@ function Home() {
               <span className='items'>1 item</span>
             </div>
             <div className='grid-container'>
-              {selectedEvent ? ( 
+              {selectedEvent ? (
                 <div className='container'>
                   <div className='eventheadline'>
                     <span>{selectedEvent.eventname}</span>
@@ -149,21 +179,23 @@ function Home() {
                       <span className='pricetxt'>{selectedEvent.free ? 'FREE' : 'PAID'}</span>
                     </div>
                     <div className="containerbtn">
+                      {isBookButtonRemoved ? null : (
+                        <button id='bookbtn' onClick={handleBookClick}>
+                          <span className='booktxt'>BOOK</span>
+                          <img src={Rightarrow} alt="" className='rightarrowimg' />
+                        </button>
+                      )}
                       <button id='viewposterbtn' onClick={() => openPoster(selectedEvent.image)}>VIEW POSTER</button>
-                      <button id='bookbtn' onClick={handleBookClick}>
-                        <span className='booktxt'>BOOK</span>
-                        <img src={Rightarrow} alt="" className='rightarrowimg' />
-                      </button>
                     </div>
                   </div>
                 </div>
               ) : (
-                <div>No event selected</div> 
+                <div>No event selected</div>
               )}
             </div>
             <div className='bookcontainerbtncontainer'>
               <button className='cancelticket' onClick={() => toggleBookContainer(false)}>CANCEL TICKET</button>
-              <button className='confirmticket'>CONFIRM TICKET</button>
+              <button className='confirmticket' onClick={confirmTicket}>CONFIRM TICKET</button>
             </div>
           </div>
           <Navbar onCategorySelect={setSelectedCategory} setSearchQuery={setSearchQuery} />
@@ -173,13 +205,13 @@ function Home() {
               <div key={event._id} className='container'>
                 <div className='eventheadline'>
                   <span>{event.eventname}</span>
-                </div> 
+                </div>
                 <div className='eventdetails'>
                   <div className='eventdetailsbolden'>
                     <p>DATE: <span className='details'>{event.date}</span></p>
                     <p>LOCATION: <span className='details'>{event.location}</span></p>
                     <p>TIMING: <span className='details'>{event.timing}</span></p>
-                    <p>ORGANIZERS: <span className='details'>{event.organizers}</span></p>  
+                    <p>ORGANIZERS: <span className='details'>{event.organizers}</span></p>
                   </div>
                   <div className='seatcontainer'>
                     <span>
@@ -207,10 +239,17 @@ function Home() {
               </button>
             </div>
           )}
-          <hr className="footerline" />
-          <p className="footertext"> 
-            Made with ❤️ by Rushikesh
-          </p>
+          {showConfetti && (
+            <div className="confetti-message-wrapper">
+              <div className="confetti-wrapper">
+                <Lottie options={defaultOptions} height={400} width={400} />
+              </div>
+              <div className="confetti-message" style={{ position: 'relative', zIndex: 1001 }}>
+                Congratulations! You have booked a ticket!
+              </div>
+            </div>
+          )}
+          <Footer />
         </>
       )}
     </>
