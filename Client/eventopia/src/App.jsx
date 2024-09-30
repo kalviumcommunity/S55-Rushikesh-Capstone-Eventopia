@@ -6,6 +6,7 @@ import Signup from './components/signup'
 import Signin from './components/signin';
 import Aboutus from './components/aboutus';
 import Footer from './components/footer';
+import Myaccount from './components/myaccount';
 import './App.css'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/footer" element={<Footer />} />
+          <Route path="/myaccount" element={<Myaccount />} />
                     
         </Routes>
 
