@@ -18,6 +18,7 @@ function Navbar({ onCategorySelect, setSearchQuery }) {
   const [searchSymbolVisible, setSearchSymbolVisible] = useState(true);
   const [searchActive, setSearchActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false); // State to manage modal visibility
   const searchContainerRef = useRef(null);
 
   useEffect(() => {
@@ -63,8 +64,17 @@ function Navbar({ onCategorySelect, setSearchQuery }) {
   };
 
   const handleLogout = () => {
+    setShowLogoutModal(true); // Show the modal when clicking logout
+  };
+
+  const confirmLogout = () => {
     localStorage.removeItem('username');
     setIsLoggedIn(false);
+    setShowLogoutModal(false); // Close modal after logout
+  };
+
+  const cancelLogout = () => {
+    setShowLogoutModal(false); // Close modal without logout
   };
 
   return (
@@ -82,17 +92,15 @@ function Navbar({ onCategorySelect, setSearchQuery }) {
         </div>
         <ul>
           {isLoggedIn ? (
-            <>
-              <li className="nav-item"><Link to="/myaccount">MY ACCOUNT</Link></li>
-              <li className="nav-item" id="logoutbtn"><button onClick={handleLogout}>LOGOUT</button></li>
-            </>
+            <li className="nav-item" id="logoutbtn"><button onClick={handleLogout}>LOGOUT</button></li>
+
           ) : (
             <>
               <li className="nav-item"><Link to="/signup">SIGN UP</Link></li>
               <li className="nav-item"><Link to="/signin">SIGN IN</Link></li>
             </>
           )}
-          <li className="nav-item" ><Link to="/aboutus">ABOUT US</Link></li>
+          <li className="nav-item"><Link to="/aboutus">ABOUT US</Link></li>
         </ul>
       </nav>
       <div className="horizontal-line"></div>
@@ -126,6 +134,17 @@ function Navbar({ onCategorySelect, setSearchQuery }) {
           <button className={activeButton === 'cultural' ? "pressed" : ""} onClick={() => handleClick('cultural')}>CULTURAL</button>
         </div>
       </div>
+      
+      {/* Logout Confirmation Modal */}
+      {showLogoutModal && (
+        <div className="logout-modal">
+          <div className="logout-modal-content">
+            <p>Are you sure you want to logout?</p>
+            <button onClick={confirmLogout}>Confirm Logout</button>
+            <button onClick={cancelLogout}>Cancel</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
