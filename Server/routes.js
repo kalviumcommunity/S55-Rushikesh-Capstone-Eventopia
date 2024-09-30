@@ -1,11 +1,21 @@
 const express = require("express");
 const { body, validationResult } = require("express-validator");
 const router = express.Router();
+const rateLimit = require("express-rate-limit");
 const { getDataFromDatabase } = require("./db.js");
 const { dataModel } = require("./schema.js");
 const { userModel } = require("./userschema.js");
 const jwt = require('jsonwebtoken');
+
 router.use(express.json());
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, 
+  max: 5, 
+  message: "Too many requests from this IP, please try again later.",
+});
+
+router.use(limiter);
 
 router.get("/data", async (req, res) => {
   try {
@@ -110,6 +120,5 @@ router.post('/auth', async (req, res) => {
     res.status(500).json({ error: "Failed to generate access token" });
   }
 });
-
 
 module.exports = router;
