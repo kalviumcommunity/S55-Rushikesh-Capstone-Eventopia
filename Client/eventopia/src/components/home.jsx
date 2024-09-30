@@ -5,9 +5,6 @@ import Footer from './footer';
 import Seats from '../assets/seats.png';
 import Rightarrow from '../assets/rightarrow.png';
 import Cross from '../assets/cross.png';
-import Lottie from 'react-lottie';
-import * as animationData from '../assets/animation.json';
-import confetti from 'canvas-confetti';
 import './home.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,7 +20,7 @@ function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isTicketConfirmed, setIsTicketConfirmed] = useState(false);
-  const [showConfetti, setShowConfetti] = useState(false);
+  const [showTicketConfirmation, setShowTicketConfirmation] = useState(false);
   const [isBookButtonRemoved, setIsBookButtonRemoved] = useState(false); 
   const navigate = useNavigate();
   const username = localStorage.getItem('username');
@@ -125,23 +122,8 @@ function Home() {
 
   const confirmTicket = () => {
     setIsTicketConfirmed(true);
-    setShowConfetti(true);
+    setShowTicketConfirmation(true);
     toggleBookContainer(false);
-    setTimeout(() => setShowConfetti(false), 3000); 
-    confetti({
-      particleCount: 200,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
-  };
-
-  const defaultOptions = {
-    loop: false,
-    autoplay: true,
-    animationData: animationData.default,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
   };
 
   return (
@@ -239,13 +221,19 @@ function Home() {
               </button>
             </div>
           )}
-          {showConfetti && (
-            <div className="confetti-message-wrapper">
-              <div className="confetti-wrapper">
-                <Lottie options={defaultOptions} height={400} width={400} />
-              </div>
-              <div className="confetti-message" style={{ position: 'relative', zIndex: 1001 }}>
-                Congratulations! You have booked a ticket!
+          {showTicketConfirmation && (
+            <div className="ticket-confirmation-overlay">
+              <div className="ticket-confirmation-box">
+                <h2>Ticket Booked</h2>
+                <p>You have successfully booked a ticket for:</p>
+                <div className="event-details">
+                  <p><strong>Event:</strong> {selectedEvent.eventname}</p>
+                  <p><strong>Date:</strong> {selectedEvent.date}</p>
+                  <p><strong>Location:</strong> {selectedEvent.location}</p>
+                  <p><strong>Timing:</strong> {selectedEvent.timing}</p>
+                  <p><strong>Organizers:</strong> {selectedEvent.organizers}</p>
+                </div>
+                <button onClick={() => setShowTicketConfirmation(false)}>Close</button>
               </div>
             </div>
           )}
