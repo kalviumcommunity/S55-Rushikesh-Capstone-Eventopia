@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
-import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google'; // Import Google Login components
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google'; 
 import './signin.css'; 
 
 const Signin = () => {
@@ -9,7 +9,8 @@ const Signin = () => {
     const [password, setPassword] = useState('');
     const [signinError, setSigninError] = useState('');
     const navigate = useNavigate();
-    const clientId = '513278707041-ghvl35ifp7e9mmuacsacvuqcm465h4dn.apps.googleusercontent.com'; // Google client ID
+
+    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
     const handleAuth = async () => {
         localStorage.setItem('username', email);
@@ -46,7 +47,7 @@ const Signin = () => {
         console.log('Google Sign-In successful! 🎉', res);
         alert('Google Sign-In successful! 🎉');
         document.cookie = 'googleToken=' + res.credential; 
-        navigate('/'); // Navigate after successful Google login
+        navigate('/'); 
     };
 
     const onGoogleError = (error) => {
@@ -94,10 +95,11 @@ const Signin = () => {
             </div>
 
             <p className='signupoptiontxt'>
-                Not a member? <Link to="/signup" className="signup-link">Sign Up</Link>
+                Not a member? 
+                <Link to="/signup" className="signup-link"> Sign Up</Link>
             </p>
         </div>
     );
 };
 
-export default Signin;
+export default Signin;
