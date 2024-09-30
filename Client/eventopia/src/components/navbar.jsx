@@ -82,8 +82,10 @@ function Navbar({ onCategorySelect, setSearchQuery }) {
         </div>
         <ul>
           {isLoggedIn ? (
-            <li className="nav-item" id="logoutbtn"><button onClick={handleLogout}>LOGOUT</button></li>
-
+            <>
+              <li className="nav-item"><Link to="/myaccount">MY ACCOUNT</Link></li>
+              <li className="nav-item" id="logoutbtn"><button onClick={handleLogout}>LOGOUT</button></li>
+            </>
           ) : (
             <>
               <li className="nav-item"><Link to="/signup">SIGN UP</Link></li>

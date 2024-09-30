@@ -60,6 +60,26 @@ router.post('/signin', async (req, res) => {
     res.status(500).send("Login failed");
   }
 });
+// get req for user data
+router.get('/user', async (req, res) => {
+  try {
+    const user = await userModel.find({});
+    res.json(user);
+  } catch (error) {
+    console.error("Error retrieving data from the database:", error);
+    res.status(500).json({ error: "Failed to fetch data" });
+  }
+});
+// get req for specific user email id
+router.get('/user/:email', async (req, res) => {
+  try {
+    const user = await userModel.find({ email: req.params.email });
+    res.json(user);
+  } catch (error) {
+    console.error("Error retrieving data from the database:", error);
+    res.status(500).json({ error: "Failed to fetch data" });
+  }
+});
 
 router.post('/auth', async (req, res) => {
   const { username, password } = req.body;
