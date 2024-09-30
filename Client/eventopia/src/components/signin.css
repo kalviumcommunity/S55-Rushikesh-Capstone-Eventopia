@@ -1,3 +1,4 @@
+/* Sign In Page Styles */
 body {
     font-family: 'Karla', sans-serif;
     margin: 0;
@@ -15,7 +16,7 @@ body {
 .signinform {
     max-width: 400px;
     margin: 20px auto;
-    margin-top: 8%;
+    margin-top: 7%;
     padding: 20px;
     border-radius: 5px;
 }
@@ -24,10 +25,6 @@ form label {
     display: block;
     margin-bottom: 5px; 
     transition: margin-bottom 0.3s ease; 
-}
-
-form label.active {
-    margin-bottom: 15px;
 }
 
 form input[type="email"],
@@ -63,17 +60,47 @@ form input[type="submit"]:hover {
     background-color: #45a049;
 }
 
-.signupoptiontxt{
-    margin-left: 38.5%;
-    margin-top: -1.8%;
-    font-size: 0.9vw;
+/* Google Login Container */
+.google-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the button */
+    margin: 20px auto; /* Center the container */
 }
 
-a{
-    color: inherit;
+.google-login-button {
+    width: 100%;
+    max-width: 300px; /* Optional max-width */
+    padding: 10px;
+    background-color: #4285F4; /* Google Blue */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.google-login-button:hover {
+    background-color: #357ae8; /* Darker blue on hover */
+}
+
+/* Sign Up Option Text */
+.signupoptiontxt {
+    text-align: left; /* Align text to the left */
+    margin-top: -2%; /* Spacing above */
+    margin-left: 38.5%;
+    font-size: 0.9vw; /* Font size */
+    color: #555; /* Subtle color */
+}
+
+.signupoptiontxt a {
+    color: #007700; /* Same color as the header */
     text-decoration: none;
 }
 
-a:hover {
+.signupoptiontxt a:hover {
     text-decoration: underline; 
 }

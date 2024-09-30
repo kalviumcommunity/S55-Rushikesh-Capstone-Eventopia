@@ -1,65 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
-
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f1f1f1;
-    font-family: 'Karla', sans-serif;
-}
-
 .my-account {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
     background-color: #f9f9f9;
-    padding: 3% 5%;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .my-account h2 {
+    text-align: center;
     color: #333;
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
-}
-
-h2 {
-    font-size: 2.5rem;
-    color: #007700;
-    margin-bottom: 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-p {
-    font-size: 1.25rem;
-    margin: 0.5rem 0;
+    margin-bottom: 20px;
+  }
+  
+  .my-account p {
+    font-size: 16px;
     color: #555;
-}
-
-p span {
-    font-weight: 600;
-    color: #007700;
-}
-
-.no-user-data {
-    text-align: center;
-    color: #999;
-    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+  
+  .my-account p span {
     font-weight: bold;
-    margin-top: 2rem;
-}
-
-@media screen and (max-width: 768px) {
-    .my-account {
-        margin: 10% 4%;
-        padding: 6%;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-
-    p {
-        font-size: 1.15rem;
-    }
-}
+  }
+  
+  .my-account div {
+    text-align: center;
+  }
+  
+  .no-user {
+    color: #999;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
