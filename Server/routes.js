@@ -61,13 +61,27 @@ router.post('/signin', async (req, res) => {
   }
 });
 // get req for user data
-router.get('/user', async (req, res) => {
+router.get("/user", async (req, res) => {
   try {
-    const user = await userModel.find({});
-    res.json(user);
+    const users = await userModel.find({});
+
+    // If no users are found
+    if (users.length === 0) {
+      return res.status(404).json({ message: "No users found" });
+    }
+
+    res.json(users);
   } catch (error) {
+    // Handle specific Mongoose errors (e.g., connection errors)
+    if (error.name === "MongoNetworkError") {
+      console.error("Database connection error:", error);
+      return res
+        .status(503)
+        .json({ error: "Service unavailable, please try again later" });
+    }
+
     console.error("Error retrieving data from the database:", error);
-    res.status(500).json({ error: "Failed to fetch data" });
+    res.status(500).json({ error: "An unexpected error occurred" });
   }
 });
 // get req for specific user email id
