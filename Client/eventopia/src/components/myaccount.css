@@ -8,7 +8,6 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #f1f1f1;
-    /* Light background for contrast */
     font-family: 'Karla', sans-serif;
 }
 
@@ -20,7 +19,6 @@ body {
     color: #333;
     max-width: 600px;
     width: 100%;
-    /* Ensure it scales well on smaller screens */
     text-align: center;
 }
 

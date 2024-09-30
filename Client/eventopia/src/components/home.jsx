@@ -126,42 +126,42 @@ function Home() {
     toggleBookContainer(false);
   };
 
-  const reviews = [
-    {
-      username: 'Parth Zile',
-      review: 'The event was amazing! I had a great time, and everything was well organized.',
-      rating: 5,
-    },
-    {
-      username: 'Ramesh Singh',
-      review: 'Good experience overall, but the seating arrangement could have been better.',
-      rating: 4,
-    },
-    {
-      username: 'Raja Kumari',
-      review: 'Had a blast! The organizers were friendly, and the atmosphere was fantastic.',
-      rating: 5,
-    },
-    {
-      username: 'Shreyash Wagh',
-      review: 'It was decent. The event started late, but the speakers were engaging.',
-      rating: 3,
-    },
-    {
-      username: 'Sonakshi',
-      review: 'Loved the tech talks! Well worth the time. Will attend next time too.',
-      rating: 5,
-    },
-    {
-      username: 'Rajesh',
-      review: 'The event had great networking opportunities, but the food options were limited.',
-      rating: 4,
-    }
-  ];
+  // const reviews = [
+  //   {
+  //     username: 'Parth Zile',
+  //     review: 'The event was amazing! I had a great time, and everything was well organized.',
+  //     rating: 5,
+  //   },
+  //   {
+  //     username: 'Ramesh Singh',
+  //     review: 'Good experience overall, but the seating arrangement could have been better.',
+  //     rating: 4,
+  //   },
+  //   {
+  //     username: 'Raja Kumari',
+  //     review: 'Had a blast! The organizers were friendly, and the atmosphere was fantastic.',
+  //     rating: 5,
+  //   },
+  //   {
+  //     username: 'Shreyash Wagh',
+  //     review: 'It was decent. The event started late, but the speakers were engaging.',
+  //     rating: 3,
+  //   },
+  //   {
+  //     username: 'Sonakshi',
+  //     review: 'Loved the tech talks! Well worth the time. Will attend next time too.',
+  //     rating: 5,
+  //   },
+  //   {
+  //     username: 'Rajesh',
+  //     review: 'The event had great networking opportunities, but the food options were limited.',
+  //     rating: 4,
+  //   }
+  // ];
 
-  const renderStars = (rating) => {
-    return '⭐'.repeat(rating);
-  };
+  // const renderStars = (rating) => {
+  //   return '⭐'.repeat(rating);
+  // };
 
   return (
     <>
@@ -273,16 +273,7 @@ function Home() {
 
           <Footer />
 
-          <div className="review-section">
-            <h2>Reviews</h2>
-            {reviews.map((review, index) => (
-              <div key={index} className="review">
-                <p><strong>{review.username}</strong></p>
-                <p>{review.review}</p>
-                <p>{renderStars(review.rating)}</p>
-              </div>
-            ))}
-          </div>
+         
         </>
       )}
     </>
