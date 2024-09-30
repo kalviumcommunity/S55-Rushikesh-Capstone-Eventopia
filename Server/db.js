@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const cron = require("node-cron");
 require("dotenv").config();
 const dataModel = require("./schema.js");
 
@@ -15,6 +16,9 @@ const startDb = async () => {
     await mongoose.connect(mongoURI);
     console.log("db connected");
     isConnected = true;
+
+    startCronJobs();
+
   } catch (err) {
     console.log("connection failed", err);
     isConnected = false;
@@ -22,7 +26,21 @@ const startDb = async () => {
   }
 };
 
+const startCronJobs = () => {
+  cron.schedule('* * * * *', async () => {
+    try {
+      console.log('Running a task every minute...');
+      
+      const data = await dataModel.find(); 
+      console.log('Fetched data:', data);
 
+    } catch (error) {
+      console.error('Error executing cron job:', error);
+    }
+  });
+
+  console.log('Cron job scheduled to run every minute.');
+};
 
 const getConnectionStatus = async () => {
   return isConnected

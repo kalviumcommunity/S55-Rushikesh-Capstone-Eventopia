@@ -13,4 +13,5 @@ const eventSchema = mongoose.Schema({
 
 const dataModel = mongoose.model("eventopia", eventSchema);
 
-module.exports = { dataModel };
+// Directly export the model
+module.exports = dataModel;

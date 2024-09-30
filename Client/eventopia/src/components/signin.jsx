@@ -84,20 +84,20 @@ const Signin = () => {
                 <input type="submit" value="Sign In" />
             </form>
 
-            <p>Or sign in with:</p>
+            <p className='signupoptiontxt'>
+                Not a member? 
+                <Link to="/signup" className="signup-link"> Sign Up</Link>
+            </p>
+
             <div className="google-login-container">
                 <GoogleOAuthProvider clientId={clientId}>
                     <GoogleLogin
+                        className="google-login-button"
                         onSuccess={onGoogleSuccess}
                         onError={onGoogleError}
                     />
                 </GoogleOAuthProvider>
             </div>
-
-            <p className='signupoptiontxt'>
-                Not a member? 
-                <Link to="/signup" className="signup-link"> Sign Up</Link>
-            </p>
         </div>
     );
 };

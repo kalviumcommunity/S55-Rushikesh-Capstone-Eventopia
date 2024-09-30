@@ -21,14 +21,13 @@ function Home() {
   const [searchResults, setSearchResults] = useState([]);
   const [isTicketConfirmed, setIsTicketConfirmed] = useState(false);
   const [showTicketConfirmation, setShowTicketConfirmation] = useState(false);
-  const [isBookButtonRemoved, setIsBookButtonRemoved] = useState(false); 
+  const [isBookButtonRemoved, setIsBookButtonRemoved] = useState(false);
   const navigate = useNavigate();
-  const username = localStorage.getItem('username');
 
   const toggleBookContainer = (show) => {
     setShowBookContainer(show);
     if (show) {
-      setIsBookButtonRemoved(true); 
+      setIsBookButtonRemoved(true);
     }
   };
 
@@ -126,42 +125,42 @@ function Home() {
     toggleBookContainer(false);
   };
 
-  // const reviews = [
-  //   {
-  //     username: 'Parth Zile',
-  //     review: 'The event was amazing! I had a great time, and everything was well organized.',
-  //     rating: 5,
-  //   },
-  //   {
-  //     username: 'Ramesh Singh',
-  //     review: 'Good experience overall, but the seating arrangement could have been better.',
-  //     rating: 4,
-  //   },
-  //   {
-  //     username: 'Raja Kumari',
-  //     review: 'Had a blast! The organizers were friendly, and the atmosphere was fantastic.',
-  //     rating: 5,
-  //   },
-  //   {
-  //     username: 'Shreyash Wagh',
-  //     review: 'It was decent. The event started late, but the speakers were engaging.',
-  //     rating: 3,
-  //   },
-  //   {
-  //     username: 'Sonakshi',
-  //     review: 'Loved the tech talks! Well worth the time. Will attend next time too.',
-  //     rating: 5,
-  //   },
-  //   {
-  //     username: 'Rajesh',
-  //     review: 'The event had great networking opportunities, but the food options were limited.',
-  //     rating: 4,
-  //   }
-  // ];
+  const reviews = [
+    {
+      username: 'Parth Zile',
+      review: 'The event was amazing! I had a great time, and everything was well organized.',
+      rating: 5,
+    },
+    {
+      username: 'Ramesh Singh',
+      review: 'Good experience overall, but the seating arrangement could have been better.',
+      rating: 4,
+    },
+    {
+      username: 'Raja Kumari',
+      review: 'Had a blast! The organizers were friendly, and the atmosphere was fantastic.',
+      rating: 5,
+    },
+    {
+      username: 'Shreyash Wagh',
+      review: 'It was decent. The event started late, but the speakers were engaging.',
+      rating: 3,
+    },
+    {
+      username: 'Sonakshi',
+      review: 'Loved the tech talks! Well worth the time. Will attend next time too.',
+      rating: 5,
+    },
+    {
+      username: 'Rajesh',
+      review: 'The event had great networking opportunities, but the food options were limited.',
+      rating: 4,
+    }
+  ];
 
-  // const renderStars = (rating) => {
-  //   return '⭐'.repeat(rating);
-  // };
+  const renderStars = (rating) => {
+    return '⭐'.repeat(rating);
+  };
 
   return (
     <>
@@ -251,21 +250,27 @@ function Home() {
             ))}
           </div>
 
-          {/* Reviews Section */}
-          
-
-          {showPoster && (
-            <div className='poster-container'>
-              <img src={posterUrl} alt='Event Poster' className='poster-image' />
-              <img src={Cross} alt='' className='cross' onClick={closePoster} />
+          {posterUrl && (
+            <div className="poster-overlay">
+              <img src={posterUrl} alt="Poster" className="poster-image" />
+              <button onClick={closePoster} className="close-poster-button">
+                Close
+              </button>
             </div>
           )}
 
           {showTicketConfirmation && (
             <div className="ticket-confirmation-overlay">
               <div className="ticket-confirmation-box">
-                <h2>Ticket Confirmed!</h2>
-                <p>Your ticket has been confirmed. Enjoy the event!</p>
+                <h2>Ticket Booked</h2>
+                <p>You have successfully booked a ticket for:</p>
+                <div className="event-details">
+                  <p><strong>Event:</strong> {selectedEvent.eventname}</p>
+                  <p><strong>Date:</strong> {selectedEvent.date}</p>
+                  <p><strong>Location:</strong> {selectedEvent.location}</p>
+                  <p><strong>Timing:</strong> {selectedEvent.timing}</p>
+                  <p><strong>Organizers:</strong> {selectedEvent.organizers}</p>
+                </div>
                 <button onClick={() => setShowTicketConfirmation(false)}>Close</button>
               </div>
             </div>
@@ -273,7 +278,17 @@ function Home() {
 
           <Footer />
 
-         
+          <div className="review-section">
+    <h2>Reviews</h2>
+    {reviews.map((review, index) => (
+        <div key={index} className="review">
+            <p><strong>{review.username}</strong></p>
+            <p>{review.review}</p>
+            <p className="rating">{renderStars(review.rating)}</p> {/* Added class for rating */}
+        </div>
+    ))}
+</div>
+
         </>
       )}
     </>
