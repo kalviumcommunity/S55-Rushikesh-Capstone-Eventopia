@@ -443,3 +443,44 @@
         transform: rotate(360deg);
         }
     }
+    /* Reviews Section */
+.review-section {
+    margin: 40px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .review-section h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .review {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .review p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .review strong {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .review p:last-child {
+    font-size: 14px;
+    color: #ffcc00;
+  }
+  
