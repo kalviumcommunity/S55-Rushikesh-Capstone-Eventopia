@@ -2,16 +2,15 @@ const express = require("express");
 const { body, validationResult } = require("express-validator");
 const router = express.Router();
 const rateLimit = require("express-rate-limit");
-const { getDataFromDatabase } = require("./db.js");
-const { dataModel } = require("./schema.js");
+const dataModel = require("./schema.js"); // Corrected import
 const { userModel } = require("./userschema.js");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 router.use(express.json());
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, 
-  max: 500, 
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 500, // Limit each IP to 500 requests per windowMs
   message: "Too many requests from this IP, please try again later.",
 });
 
@@ -19,6 +18,11 @@ router.use(limiter);
 
 router.get("/data", async (req, res) => {
   try {
+    console.log("DataModel:", dataModel); // Debugging log
+    if (!dataModel || typeof dataModel.find !== "function") {
+      throw new Error("dataModel is not properly defined or find is not a function");
+    }
+
     const data = await dataModel.find({});
     res.json(data);
   } catch (error) {
@@ -27,31 +31,28 @@ router.get("/data", async (req, res) => {
   }
 });
 
-router.get('/', (req, res) => {
-  res.send('Server Deployed Successfully');
+router.get("/", (req, res) => {
+  res.send("Server Deployed Successfully");
 });
 
-router.post(
-  '/signup',
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    try {
-      const { firstName, email, password } = req.body;
-      const response = await userModel.create({ firstName, email, password });
-      res.status(200).send(response);
-      console.log(response);
-    } catch (err) {
-      console.log("Error in signing up user", err);
-      res.status(500).send("Error in signing up user");
-    }
+router.post("/signup", async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
-);
 
-router.post('/signin', async (req, res) => {
+  try {
+    const { firstName, email, password } = req.body;
+    const response = await userModel.create({ firstName, email, password });
+    res.status(200).send(response);
+    console.log(response);
+  } catch (err) {
+    console.log("Error in signing up user", err);
+    res.status(500).send("Error in signing up user");
+  }
+});
+
+router.post("/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await userModel.findOne({ email });
@@ -70,7 +71,8 @@ router.post('/signin', async (req, res) => {
     res.status(500).send("Login failed");
   }
 });
-// get req for user data
+
+// Get request for all user data
 router.get("/user", async (req, res) => {
   try {
     const users = await userModel.find({});
@@ -82,20 +84,18 @@ router.get("/user", async (req, res) => {
 
     res.json(users);
   } catch (error) {
-    // Handle specific Mongoose errors (e.g., connection errors)
     if (error.name === "MongoNetworkError") {
       console.error("Database connection error:", error);
-      return res
-        .status(503)
-        .json({ error: "Service unavailable, please try again later" });
+      return res.status(503).json({ error: "Service unavailable, please try again later" });
     }
 
     console.error("Error retrieving data from the database:", error);
     res.status(500).json({ error: "An unexpected error occurred" });
   }
 });
-// get req for specific user email id
-router.get('/user/:email', async (req, res) => {
+
+// Get request for specific user by email ID
+router.get("/user/:email", async (req, res) => {
   try {
     const user = await userModel.find({ email: req.params.email });
     res.json(user);
@@ -105,12 +105,10 @@ router.get('/user/:email', async (req, res) => {
   }
 });
 
-router.post('/auth', async (req, res) => {
+// Endpoint to generate authentication token
+router.post("/auth", async (req, res) => {
   const { username, password } = req.body;
-  const user = {
-    username: username,
-    password: password
-  };
+  const user = { username: username, password: password };
 
   try {
     const ACCESS_TOKEN = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
